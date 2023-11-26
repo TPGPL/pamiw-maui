@@ -2,11 +2,41 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PamiwMauiApp.Views.PublishersView"
+             xmlns:viewmodel="clr-namespace:PamiwMauiApp.ViewModels"
              Title="Publishers">
-    <VerticalStackLayout>
-        <Label 
-            Text="Publishers"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="New" Command="{Binding NewCommand}"/>
+    </ContentPage.ToolbarItems>
+    <ScrollView>
+        <VerticalStackLayout
+        Spacing="25"
+        Padding="30,0"
+        VerticalOptions="Center">
+
+            <CollectionView  ItemsSource="{Binding Publishers}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="5" Margin="5">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer
+                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:PublishersViewModel}}, Path=ShowDetailsCommand }"
+                            CommandParameter="{Binding .}" ></TapGestureRecognizer>
+                            </Frame.GestureRecognizers>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <HorizontalStackLayout Grid.Row="0" >
+                                    <Label Text="{Binding Id}"  Margin="0,0,10,0"></Label>
+                                    <Label Text="{Binding Name}" FontSize="16"></Label>
+
+                                </HorizontalStackLayout>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

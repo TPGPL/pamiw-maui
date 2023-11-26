@@ -68,6 +68,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Views\PublisherDetailsView.xaml.cs">
+	    <DependentUpon>PublisherDetailsView.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\NewPublisherView.xaml.cs">
+	    <DependentUpon>NewPublisherView.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\NewAuthorView.xaml.cs">
 	    <DependentUpon>NewAuthorView.xaml</DependentUpon>
 	  </Compile>
@@ -83,6 +89,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Views\PublisherDetailsView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewPublisherView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\NewAuthorView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
