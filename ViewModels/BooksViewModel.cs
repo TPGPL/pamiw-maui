@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using PamiwMauiApp.Components;
 using PamiwMauiApp.Models;
 using PamiwMauiApp.Services;
 using PamiwMauiApp.Views;
@@ -10,13 +11,15 @@ namespace PamiwMauiApp.ViewModels
     public partial class BooksViewModel : ObservableObject
     {
         private readonly IBookService _bookService;
+        private readonly MauiMessageDialogService _dialogService;
         public ObservableCollection<Book> Books { get; private set; }
         [ObservableProperty]
         private Book? selectedBook;
 
-        public BooksViewModel(IBookService bookService)
+        public BooksViewModel(IBookService bookService, MauiMessageDialogService dialogService)
         {
             _bookService = bookService;
+            _dialogService = dialogService;
             Books = new ObservableCollection<Book>();
             GetBooks();
         }
@@ -33,6 +36,9 @@ namespace PamiwMauiApp.ViewModels
                 {
                     Books.Add(a);
                 }
+            } else
+            {
+                _dialogService.ShowMessage(response.Message ?? "Failed to get books.");
             }
         }
 

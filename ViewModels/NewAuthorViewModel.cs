@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using PamiwMauiApp.Components;
 using PamiwMauiApp.Models;
 using PamiwMauiApp.Services;
 
@@ -10,12 +11,14 @@ namespace PamiwMauiApp.ViewModels
     public partial class NewAuthorViewModel : ObservableObject
     {
         private readonly IAuthorService _authorService;
+        private readonly MauiMessageDialogService _dialogService;
         private AuthorsViewModel _authorsViewModel;
 
-        public NewAuthorViewModel(IAuthorService authorService, AuthorsViewModel authorsViewModel)
+        public NewAuthorViewModel(IAuthorService authorService, AuthorsViewModel authorsViewModel, MauiMessageDialogService dialogService)
         {
             _authorService = authorService;
             _authorsViewModel = authorsViewModel;
+            _dialogService = dialogService;
         }
 
         public AuthorsViewModel AuthorsViewModel
@@ -48,6 +51,8 @@ namespace PamiwMauiApp.ViewModels
 
             if (result.Success)
                 await _authorsViewModel.GetAuthors();
+            else
+                _dialogService.ShowMessage(result.Message ?? "Failed to create author.");
         }
 
         [RelayCommand]

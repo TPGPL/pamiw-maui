@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using PamiwMauiApp.Components;
 using PamiwMauiApp.Services;
 using PamiwMauiApp.ViewModels;
 using PamiwMauiApp.Views;
@@ -33,6 +34,7 @@ namespace PamiwMauiApp
             builder.Services.AddSingleton<IBookService, BookService>();
             builder.Services.AddSingleton<IPublisherService, PublisherService>();
             builder.Services.AddSingleton<IAuthorService, AuthorService>();
+            builder.Services.AddSingleton<MauiMessageDialogService>();
 
             builder.Services.AddSingleton<HttpClient>(sp => new HttpClient() { BaseAddress = new Uri("http://localhost:8081/api/") });
 

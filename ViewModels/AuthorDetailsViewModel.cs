@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using PamiwMauiApp.Components;
 using PamiwMauiApp.Models;
 using PamiwMauiApp.Services;
 
@@ -10,12 +11,14 @@ namespace PamiwMauiApp.ViewModels
     public partial class AuthorDetailsViewModel : ObservableObject
     {
         private readonly IAuthorService _authorService;
+        private readonly MauiMessageDialogService _dialogService;
         private AuthorsViewModel _authorsViewModel;
 
-        public AuthorDetailsViewModel(IAuthorService authorService, AuthorsViewModel authorsViewModel)
+        public AuthorDetailsViewModel(IAuthorService authorService, AuthorsViewModel authorsViewModel, MauiMessageDialogService dialogService)
         {
             _authorService = authorService;
             _authorsViewModel = authorsViewModel;
+            _dialogService = dialogService;
         }
 
         public AuthorsViewModel AuthorsViewModel
@@ -50,8 +53,12 @@ namespace PamiwMauiApp.ViewModels
                 Email = Author.Email
             };
 
-            await _authorService.UpdateAuthorAsync(Author.Id, authorToUpdate);
-            await _authorsViewModel.GetAuthors();
+            var response = await _authorService.UpdateAuthorAsync(Author.Id, authorToUpdate);
+
+            if (response.Success)
+                await _authorsViewModel.GetAuthors();
+            else
+                _dialogService.ShowMessage(response.Message ?? "Failed to update author.");
         }
 
 

@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using PamiwMauiApp.Components;
 using PamiwMauiApp.Models;
 using PamiwMauiApp.Services;
 
@@ -10,12 +11,14 @@ namespace PamiwMauiApp.ViewModels
     public partial class NewBookViewModel : ObservableObject
     {
         private readonly IBookService _bookService;
+        private readonly MauiMessageDialogService _dialogService;
         private BooksViewModel _booksViewModel;
 
-        public NewBookViewModel(IBookService bookService, BooksViewModel booksViewModel)
+        public NewBookViewModel(IBookService bookService, BooksViewModel booksViewModel, MauiMessageDialogService dialogService)
         {
             _bookService = bookService;
             _booksViewModel = booksViewModel;
+            _dialogService = dialogService;
         }
 
         public BooksViewModel BooksViewModel
@@ -51,6 +54,8 @@ namespace PamiwMauiApp.ViewModels
 
             if (result.Success)
                 await _booksViewModel.GetBooks();
+            else
+                _dialogService.ShowMessage(result.Message ?? "Failed to create book.");
         }
 
         [RelayCommand]

@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using PamiwMauiApp.Components;
 using PamiwMauiApp.Models;
 using PamiwMauiApp.Services;
 
@@ -10,12 +11,14 @@ namespace PamiwMauiApp.ViewModels
     public partial class PublisherDetailsViewModel : ObservableObject
     {
         private readonly IPublisherService _publisherService;
+        private readonly MauiMessageDialogService _dialogService;
         private PublishersViewModel _publishersViewModel;
 
-        public PublisherDetailsViewModel(IPublisherService publisherService, PublishersViewModel publishersViewModel)
+        public PublisherDetailsViewModel(IPublisherService publisherService, PublishersViewModel publishersViewModel, MauiMessageDialogService dialogService)
         {
             _publisherService = publisherService;
             _publishersViewModel = publishersViewModel;
+            _dialogService = dialogService;
         }
 
         public PublishersViewModel PublishersViewModel
@@ -48,8 +51,12 @@ namespace PamiwMauiApp.ViewModels
                 Name = Publisher.Name
             };
 
-            await _publisherService.UpdatePublisherAsync(Publisher.Id, publisherToUpdate);
-            await _publishersViewModel.GetPublishers();
+            var response = await _publisherService.UpdatePublisherAsync(Publisher.Id, publisherToUpdate);
+
+            if (response.Success)
+                await _publishersViewModel.GetPublishers();
+            else
+                _dialogService.ShowMessage(response.Message ?? "Failed to update publisher.");
         }
 
 

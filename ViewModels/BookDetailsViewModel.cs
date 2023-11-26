@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using PamiwMauiApp.Components;
 using PamiwMauiApp.Models;
 using PamiwMauiApp.Services;
 
@@ -10,12 +11,14 @@ namespace PamiwMauiApp.ViewModels
     public partial class BookDetailsViewModel : ObservableObject
     {
         private readonly IBookService _bookService;
+        private readonly MauiMessageDialogService _dialogService;
         private BooksViewModel _booksViewModel;
 
-        public BookDetailsViewModel(IBookService bookService, BooksViewModel booksViewModel)
+        public BookDetailsViewModel(IBookService bookService, BooksViewModel booksViewModel, MauiMessageDialogService dialogService)
         {
             _bookService = bookService;
             _booksViewModel = booksViewModel;
+            _dialogService = dialogService;
         }
 
         public BooksViewModel BooksViewModel
@@ -53,8 +56,12 @@ namespace PamiwMauiApp.ViewModels
                 ISBN = Book.ISBN
             };
 
-            await _bookService.UpdateBookAsync(Book.Id, bookToUpdate);
-            await _booksViewModel.GetBooks();
+            var response = await _bookService.UpdateBookAsync(Book.Id, bookToUpdate);
+
+            if (response.Success)
+                await _booksViewModel.GetBooks();
+            else
+                _dialogService.ShowMessage(response.Message ?? "Failed to update book.");
         }
 
 

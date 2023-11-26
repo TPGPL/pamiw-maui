@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using PamiwMauiApp.Components;
 using PamiwMauiApp.Models;
 using PamiwMauiApp.Services;
 using PamiwMauiApp.Views;
@@ -10,13 +11,15 @@ namespace PamiwMauiApp.ViewModels
     public partial class PublishersViewModel : ObservableObject
     {
         private readonly IPublisherService _publisherService;
+        private readonly MauiMessageDialogService _dialogService;
         public ObservableCollection<Publisher> Publishers { get; private set; }
         [ObservableProperty]
         private Publisher? selectedPublisher;
 
-        public PublishersViewModel(IPublisherService publisherService)
+        public PublishersViewModel(IPublisherService publisherService, MauiMessageDialogService dialogService)
         {
             _publisherService = publisherService;
+            _dialogService = dialogService;
             Publishers = new ObservableCollection<Publisher>();
             GetPublishers();
         }
@@ -33,6 +36,9 @@ namespace PamiwMauiApp.ViewModels
                 {
                     Publishers.Add(a);
                 }
+            } else
+            {
+                _dialogService.ShowMessage(response.Message ?? "Failed to get publishers.");
             }
         }
 

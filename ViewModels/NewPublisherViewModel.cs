@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using PamiwMauiApp.Components;
 using PamiwMauiApp.Models;
 using PamiwMauiApp.Services;
 
@@ -10,12 +11,14 @@ namespace PamiwMauiApp.ViewModels
     public partial class NewPublisherViewModel : ObservableObject
     {
         private readonly IPublisherService _publisherService;
+        private readonly MauiMessageDialogService _dialogService;
         private PublishersViewModel _publishersViewModel;
 
-        public NewPublisherViewModel(IPublisherService publisherService, PublishersViewModel publishersViewModel)
+        public NewPublisherViewModel(IPublisherService publisherService, PublishersViewModel publishersViewModel, MauiMessageDialogService dialogService)
         {
             _publisherService = publisherService;
             _publishersViewModel = publishersViewModel;
+            _dialogService = dialogService;
         }
 
         public PublishersViewModel PublishersViewModel
@@ -46,6 +49,8 @@ namespace PamiwMauiApp.ViewModels
 
             if (result.Success)
                 await _publishersViewModel.GetPublishers();
+            else
+                _dialogService.ShowMessage(result.Message ?? "Failed to create publisher.");
         }
 
         [RelayCommand]

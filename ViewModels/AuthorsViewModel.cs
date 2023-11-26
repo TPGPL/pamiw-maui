@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using PamiwMauiApp.Components;
 using PamiwMauiApp.Models;
 using PamiwMauiApp.Services;
 using PamiwMauiApp.Views;
@@ -10,14 +11,16 @@ namespace PamiwMauiApp.ViewModels
     public partial class AuthorsViewModel : ObservableObject
     {
         private readonly IAuthorService _authorService;
+        private readonly MauiMessageDialogService _dialogService;
         public ObservableCollection<Author> Authors { get; private set; }
         [ObservableProperty]
         private Author? selectedAuthor;
 
-        public AuthorsViewModel(IAuthorService authorService)
+        public AuthorsViewModel(IAuthorService authorService, MauiMessageDialogService dialogService)
         {
             _authorService = authorService;
             Authors = new ObservableCollection<Author>();
+            _dialogService = dialogService;
             GetAuthors();
         }
 
@@ -33,6 +36,9 @@ namespace PamiwMauiApp.ViewModels
                 {
                     Authors.Add(a);
                 }
+            } else
+            {
+                _dialogService.ShowMessage(response.Message ?? "Failed to get authors.");
             }
         }
 
