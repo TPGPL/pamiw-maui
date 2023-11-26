@@ -4,6 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:PamiwMauiApp"
+    xmlns:views="clr-namespace:PamiwMauiApp.Views"
     Shell.FlyoutBehavior="Flyout"
     Title="PamiwMauiApp">
     <FlyoutItem Title="Home">
@@ -16,26 +17,17 @@
     </FlyoutItem>
     <FlyoutItem Title="Books">
         <Tab>
-            <ShellContent
-Title="Home"
-ContentTemplate="{DataTemplate local:MainPage}"
-Route="MainPage" />
+            <ShellContent Title="Books" ContentTemplate="{DataTemplate views:BooksView}" Route="BooksView" />
         </Tab>
     </FlyoutItem>
     <FlyoutItem Title="Authors">
         <Tab>
-            <ShellContent
-Title="Home"
-ContentTemplate="{DataTemplate local:MainPage}"
-Route="MainPage" />
+            <ShellContent Title="Authors" ContentTemplate="{DataTemplate views:AuthorsView}" Route="AuthorsView" />
         </Tab>
     </FlyoutItem>
     <FlyoutItem Title="Publishers">
         <Tab>
-            <ShellContent
-Title="Home"
-ContentTemplate="{DataTemplate local:MainPage}"
-Route="MainPage" />
+            <ShellContent Title="Publishers" ContentTemplate="{DataTemplate views:PublishersView}" Route="PublishersView" />
         </Tab>
     </FlyoutItem>
 </Shell>
