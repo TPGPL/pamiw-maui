@@ -3,12 +3,48 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PamiwMauiApp.Views.BooksView"
              xmlns:viewmodel="clr-namespace:PamiwMauiApp.ViewModels"
-             x:DataType="viewmodel:BooksViewModel"
              Title="Books">
-    <VerticalStackLayout>
-        <Label 
-            Text="Books"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="New" Command="{Binding NewCommand}"/>
+    </ContentPage.ToolbarItems>
+    <ScrollView>
+        <VerticalStackLayout
+        Spacing="25"
+        Padding="30,0"
+        VerticalOptions="Center">
+
+            <CollectionView  ItemsSource="{Binding Books}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="5" Margin="5">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer
+                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:BooksViewModel}}, Path=ShowDetailsCommand }"
+                            CommandParameter="{Binding .}" ></TapGestureRecognizer>
+                            </Frame.GestureRecognizers>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="35"></RowDefinition>
+                                    <RowDefinition Height="30"></RowDefinition>
+                                    <RowDefinition Height="30"></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <HorizontalStackLayout Grid.Row="0" >
+                                    <Label Text="{Binding Id}"  Margin="0,0,10,0"></Label>
+                                    <Label Text="{Binding Title}" FontSize="16"></Label>
+                                </HorizontalStackLayout>
+                                <HorizontalStackLayout Grid.Row="1" >
+                                    <Label Text="{Binding ReleaseDate, StringFormat='{0: yyyy/MM/dd}'}"></Label>
+                                </HorizontalStackLayout>
+                                <HorizontalStackLayout Grid.Row="2" >
+                                    <Label Text="ISBN:" Padding="0,0,5,0"></Label>
+                                    <Label Text="{Binding ISBN}"></Label>
+                                </HorizontalStackLayout>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

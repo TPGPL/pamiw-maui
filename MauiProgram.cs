@@ -50,6 +50,8 @@ namespace PamiwMauiApp
             builder.Services.AddTransient<NewAuthorViewModel>();
             builder.Services.AddTransient<PublisherDetailsViewModel>();
             builder.Services.AddTransient<NewPublisherViewModel>();
+            builder.Services.AddTransient<BookDetailsViewModel>();
+            builder.Services.AddTransient<NewBookViewModel>();
 
             return builder;
         }
@@ -64,6 +66,8 @@ namespace PamiwMauiApp
             builder.Services.AddTransient<NewAuthorView>();
             builder.Services.AddTransient<PublisherDetailsView>();
             builder.Services.AddTransient<NewPublisherView>();
+            builder.Services.AddTransient<BookDetailsView>();
+            builder.Services.AddTransient<NewBookView>();
 
             return builder;
         }
