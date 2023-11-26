@@ -52,7 +52,7 @@ namespace PamiwMauiApp.ViewModels
         public async Task New()
         {
             SelectedAuthor = new Author();
-            await Shell.Current.GoToAsync(nameof(AuthorDetailsView), true, new Dictionary<string, object>
+            await Shell.Current.GoToAsync(nameof(NewAuthorView), true, new Dictionary<string, object>
             {
                 {"Author", SelectedAuthor },
                 {nameof(AuthorsViewModel), this }

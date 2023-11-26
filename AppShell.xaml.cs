@@ -9,6 +9,7 @@ namespace PamiwMauiApp
             InitializeComponent();
 
             Routing.RegisterRoute(nameof(AuthorDetailsView), typeof(AuthorDetailsView));
+            Routing.RegisterRoute(nameof(NewAuthorView), typeof(NewAuthorView));
         }
     }
 }

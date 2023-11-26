@@ -7,12 +7,12 @@ namespace PamiwMauiApp.ViewModels
 {
     [QueryProperty(nameof(Author), nameof(Author))]
     [QueryProperty(nameof(AuthorsViewModel), nameof(AuthorsViewModel))]
-    public partial class AuthorDetailsViewModel : ObservableObject
+    public partial class NewAuthorViewModel : ObservableObject
     {
         private readonly IAuthorService _authorService;
         private AuthorsViewModel _authorsViewModel;
 
-        public AuthorDetailsViewModel(IAuthorService authorService, AuthorsViewModel authorsViewModel)
+        public NewAuthorViewModel(IAuthorService authorService, AuthorsViewModel authorsViewModel)
         {
             _authorService = authorService;
             _authorsViewModel = authorsViewModel;
@@ -34,39 +34,29 @@ namespace PamiwMauiApp.ViewModels
         [ObservableProperty]
         Author author;
 
-        public async Task DeleteAuthor()
-        {
-            await _authorService.DeleteAuthorAsync(Author.Id);
-            await _authorsViewModel.GetAuthors();
-        }
 
-        public async Task UpdateAuthor()
+        public async Task CreateAuthor()
         {
-            var authorToUpdate = new Author()
+            var newAuthor = new Author()
             {
-                Id = Author.Id,
                 Name = Author.Name,
                 Surname = Author.Surname,
                 Email = Author.Email
             };
 
-            await _authorService.UpdateAuthorAsync(Author.Id, authorToUpdate);
-            await _authorsViewModel.GetAuthors();
-        }
+            var result = await _authorService.CreateAuthorAsync(newAuthor);
 
+            if (result.Success)
+                await _authorsViewModel.GetAuthors();
+        }
 
         [RelayCommand]
         public async Task Save()
         {
-            await UpdateAuthor();
-            await Shell.Current.GoToAsync("../", true);
-        }
 
-        [RelayCommand]
-        public async Task Delete()
-        {
-            await DeleteAuthor();
+            await CreateAuthor();
             await Shell.Current.GoToAsync("../", true);
+
         }
     }
 }

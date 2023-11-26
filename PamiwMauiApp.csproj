@@ -68,6 +68,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Views\NewAuthorView.xaml.cs">
+	    <DependentUpon>NewAuthorView.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\AuthorDetailsView.xaml.cs">
 	    <DependentUpon>AuthorDetailsView.xaml</DependentUpon>
 	  </Compile>
@@ -80,6 +83,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Views\NewAuthorView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\AuthorDetailsView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
