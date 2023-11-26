@@ -7,6 +7,8 @@ namespace PamiwMauiApp
         public AppShell()
         {
             InitializeComponent();
+
+            Routing.RegisterRoute(nameof(AuthorDetailsView), typeof(AuthorDetailsView));
         }
     }
 }
