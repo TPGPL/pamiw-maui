@@ -39,6 +39,8 @@ namespace PamiwMauiApp.ViewModels
                 return;
             }
 
+            Shell.Current.FlyoutHeader = new LoginFlyoutHeader(User.Username);
+
             await Shell.Current.GoToAsync($"//{nameof(MainPage)}", true);
         }
 
