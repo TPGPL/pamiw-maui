@@ -1,12 +1,15 @@
-﻿using PamiwMauiApp.Views;
+﻿using PamiwMauiApp.Models;
+using PamiwMauiApp.ViewModels;
+using PamiwMauiApp.Views;
 
 namespace PamiwMauiApp
 {
     public partial class AppShell : Shell
     {
-        public AppShell()
+        public AppShell(AppShellViewModel viewModel)
         {
             InitializeComponent();
+            BindingContext = viewModel;
 
             Routing.RegisterRoute(nameof(AuthorDetailsView), typeof(AuthorDetailsView));
             Routing.RegisterRoute(nameof(NewAuthorView), typeof(NewAuthorView));
@@ -14,6 +17,7 @@ namespace PamiwMauiApp
             Routing.RegisterRoute(nameof(NewPublisherView), typeof(NewPublisherView));
             Routing.RegisterRoute(nameof(BookDetailsView), typeof(BookDetailsView));
             Routing.RegisterRoute(nameof(NewBookView), typeof(NewBookView));
+            Routing.RegisterRoute(nameof(RegisterPage), typeof(RegisterPage));
         }
     }
 }

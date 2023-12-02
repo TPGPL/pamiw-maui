@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PamiwMauiApp.Views.RegisterPage"
+             Title="Sign up" Shell.FlyoutBehavior="Flyout">
+    <VerticalStackLayout>
+        <Grid BindingContext="{Binding User}"  Margin="10" RowSpacing="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Text="Username" Grid.Row="0" Grid.Column="0"/>
+            <Entry Text="{Binding Username}" Grid.Row="0" Grid.Column="1"/>
+
+            <Label Text="Email" Grid.Row="1" Grid.Column="0"/>
+            <Entry Grid.Row="1"  Grid.Column="1" Text="{Binding Email}" />
+
+            <Label Text="Password" Grid.Row="2" Grid.Column="0"/>
+            <Entry IsPassword="True" Grid.Row="2" Grid.Column="1" Text="{Binding Password}" />
+        </Grid>
+        <VerticalStackLayout >
+            <Button Margin="0,5,0,0" Command="{Binding RegisterCommand}" Text="Register" >
+            </Button>
+        </VerticalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

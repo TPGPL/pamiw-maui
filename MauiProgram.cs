@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using PamiwMauiApp.Components;
+using PamiwMauiApp.Models;
 using PamiwMauiApp.Services;
 using PamiwMauiApp.ViewModels;
 using PamiwMauiApp.Views;
@@ -37,6 +38,7 @@ namespace PamiwMauiApp
             builder.Services.AddSingleton<MauiMessageDialogService>();
 
             builder.Services.AddSingleton<HttpClient>(sp => new HttpClient() { BaseAddress = new Uri("http://localhost:8081/api/") });
+            builder.Services.AddSingleton<UserInfo>();
 
             return builder;
         }
@@ -47,6 +49,8 @@ namespace PamiwMauiApp
             builder.Services.AddSingleton<AuthorsViewModel>();
             builder.Services.AddSingleton<PublishersViewModel>();
             builder.Services.AddSingleton<BooksViewModel>();
+            builder.Services.AddSingleton<LoginViewModel>();
+            builder.Services.AddSingleton<AppShellViewModel>();
 
             builder.Services.AddTransient<AuthorDetailsViewModel>();
             builder.Services.AddTransient<NewAuthorViewModel>();
@@ -54,6 +58,7 @@ namespace PamiwMauiApp
             builder.Services.AddTransient<NewPublisherViewModel>();
             builder.Services.AddTransient<BookDetailsViewModel>();
             builder.Services.AddTransient<NewBookViewModel>();
+            builder.Services.AddTransient<RegisterViewModel>();
 
             return builder;
         }
@@ -63,6 +68,7 @@ namespace PamiwMauiApp
             builder.Services.AddSingleton<BooksView>();
             builder.Services.AddSingleton<AuthorsView>();
             builder.Services.AddSingleton<PublishersView>();
+            builder.Services.AddSingleton<LoginPage>();
 
             builder.Services.AddTransient<AuthorDetailsView>();
             builder.Services.AddTransient<NewAuthorView>();
@@ -70,6 +76,7 @@ namespace PamiwMauiApp
             builder.Services.AddTransient<NewPublisherView>();
             builder.Services.AddTransient<BookDetailsView>();
             builder.Services.AddTransient<NewBookView>();
+            builder.Services.AddTransient<RegisterPage>();
 
             return builder;
         }

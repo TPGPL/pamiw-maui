@@ -7,12 +7,18 @@
     xmlns:views="clr-namespace:PamiwMauiApp.Views"
     Shell.FlyoutBehavior="Flyout"
     Title="PamiwMauiApp">
+    
+    <ShellContent
+    Title="Login"
+    ContentTemplate="{DataTemplate views:LoginPage}"
+    Route="LoginPage" FlyoutItemIsVisible="False" />
+    
     <FlyoutItem Title="Home">
         <Tab>
             <ShellContent
-    Title="Home"
-    ContentTemplate="{DataTemplate local:MainPage}"
-    Route="MainPage" />
+            Title="Home"
+            ContentTemplate="{DataTemplate local:MainPage}"
+            Route="HomePage" />
         </Tab>
     </FlyoutItem>
     <FlyoutItem Title="Books">
@@ -30,4 +36,7 @@
             <ShellContent Title="Publishers" ContentTemplate="{DataTemplate views:PublishersView}" Route="PublishersView" />
         </Tab>
     </FlyoutItem>
+    <Shell.FlyoutFooter>
+        <Button Text="Sign out" Command="{Binding SignOutCommand}"></Button>
+    </Shell.FlyoutFooter>
 </Shell>

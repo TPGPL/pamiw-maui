@@ -71,6 +71,9 @@
 	  <Compile Update="Views\BookDetailsView.xaml.cs">
 	    <DependentUpon>BookDetailsView.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Views\RegisterPage.xaml.cs">
+	    <DependentUpon>RegisterPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\NewBookView.xaml.cs">
 	    <DependentUpon>NewBookView.xaml</DependentUpon>
 	  </Compile>
@@ -96,6 +99,12 @@
 
 	<ItemGroup>
 	  <MauiXaml Update="Views\BookDetailsView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\RegisterPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\LoginPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\NewBookView.xaml">
