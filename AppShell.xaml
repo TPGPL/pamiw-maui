@@ -18,7 +18,7 @@
             <ShellContent
             Title="Home"
             ContentTemplate="{DataTemplate local:MainPage}"
-            Route="HomePage" />
+            Route="MainPage" />
         </Tab>
     </FlyoutItem>
     <FlyoutItem Title="Books">
