@@ -1,65 +1,64 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using PamiwMauiApp.Components;
-using PamiwMauiApp.Models;
+using PamiwShared.Models;
 using PamiwMauiApp.Services;
 
-namespace PamiwMauiApp.ViewModels
+namespace PamiwMauiApp.ViewModels;
+
+[QueryProperty(nameof(Publisher), nameof(Publisher))]
+[QueryProperty(nameof(PublishersViewModel), nameof(PublishersViewModel))]
+public partial class NewPublisherViewModel : ObservableObject
 {
-    [QueryProperty(nameof(Publisher), nameof(Publisher))]
-    [QueryProperty(nameof(PublishersViewModel), nameof(PublishersViewModel))]
-    public partial class NewPublisherViewModel : ObservableObject
+    private readonly IPublisherService _publisherService;
+    private readonly MauiMessageDialogService _dialogService;
+    private PublishersViewModel _publishersViewModel;
+
+    public NewPublisherViewModel(IPublisherService publisherService, PublishersViewModel publishersViewModel, MauiMessageDialogService dialogService)
     {
-        private readonly IPublisherService _publisherService;
-        private readonly MauiMessageDialogService _dialogService;
-        private PublishersViewModel _publishersViewModel;
+        _publisherService = publisherService;
+        _publishersViewModel = publishersViewModel;
+        _dialogService = dialogService;
+    }
 
-        public NewPublisherViewModel(IPublisherService publisherService, PublishersViewModel publishersViewModel, MauiMessageDialogService dialogService)
+    public PublishersViewModel PublishersViewModel
+    {
+        get
         {
-            _publisherService = publisherService;
-            _publishersViewModel = publishersViewModel;
-            _dialogService = dialogService;
+            return _publishersViewModel;
         }
-
-        public PublishersViewModel PublishersViewModel
+        set
         {
-            get
-            {
-                return _publishersViewModel;
-            }
-            set
-            {
-                _publishersViewModel = value;
-            }
+            _publishersViewModel = value;
         }
+    }
 
 
-        [ObservableProperty]
-        Publisher publisher;
+    [ObservableProperty]
+    Publisher publisher;
 
 
-        public async Task CreatePublisher()
+    public async Task CreatePublisher()
+    {
+        var newPublisher = new Publisher()
         {
-            var newPublisher = new Publisher()
-            {
-                Name = Publisher.Name
-            };
+            Name = Publisher.Name
+        };
 
-            var result = await _publisherService.CreatePublisherAsync(newPublisher);
+        var result = await _publisherService.CreatePublisherAsync(newPublisher);
 
-            if (result.Success)
-                await _publishersViewModel.GetPublishers();
-            else
-                _dialogService.ShowMessage(result.Message ?? "Failed to create publisher.");
-        }
+        if (result.Success)
+            await _publishersViewModel.GetPublishers();
+        else
+            _dialogService.ShowMessage(result.Message ?? "Failed to create publisher.");
+    }
 
-        [RelayCommand]
-        public async Task Save()
-        {
+    [RelayCommand]
+    public async Task Save()
+    {
 
-            await CreatePublisher();
-            await Shell.Current.GoToAsync("../", true);
+        await CreatePublisher();
+        await Shell.Current.GoToAsync("../", true);
 
-        }
     }
 }

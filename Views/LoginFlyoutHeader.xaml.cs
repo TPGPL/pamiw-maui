@@ -1,5 +1,3 @@
-using PamiwMauiApp.Models;
-
 namespace PamiwMauiApp.Views;
 
 public partial class LoginFlyoutHeader : ContentView

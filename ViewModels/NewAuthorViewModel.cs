@@ -1,67 +1,66 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using PamiwMauiApp.Components;
-using PamiwMauiApp.Models;
+using PamiwShared.Models;
 using PamiwMauiApp.Services;
 
-namespace PamiwMauiApp.ViewModels
+namespace PamiwMauiApp.ViewModels;
+
+[QueryProperty(nameof(Author), nameof(Author))]
+[QueryProperty(nameof(AuthorsViewModel), nameof(AuthorsViewModel))]
+public partial class NewAuthorViewModel : ObservableObject
 {
-    [QueryProperty(nameof(Author), nameof(Author))]
-    [QueryProperty(nameof(AuthorsViewModel), nameof(AuthorsViewModel))]
-    public partial class NewAuthorViewModel : ObservableObject
+    private readonly IAuthorService _authorService;
+    private readonly MauiMessageDialogService _dialogService;
+    private AuthorsViewModel _authorsViewModel;
+
+    public NewAuthorViewModel(IAuthorService authorService, AuthorsViewModel authorsViewModel, MauiMessageDialogService dialogService)
     {
-        private readonly IAuthorService _authorService;
-        private readonly MauiMessageDialogService _dialogService;
-        private AuthorsViewModel _authorsViewModel;
+        _authorService = authorService;
+        _authorsViewModel = authorsViewModel;
+        _dialogService = dialogService;
+    }
 
-        public NewAuthorViewModel(IAuthorService authorService, AuthorsViewModel authorsViewModel, MauiMessageDialogService dialogService)
+    public AuthorsViewModel AuthorsViewModel
+    {
+        get
         {
-            _authorService = authorService;
-            _authorsViewModel = authorsViewModel;
-            _dialogService = dialogService;
+            return _authorsViewModel;
         }
-
-        public AuthorsViewModel AuthorsViewModel
+        set
         {
-            get
-            {
-                return _authorsViewModel;
-            }
-            set
-            {
-                _authorsViewModel = value;
-            }
+            _authorsViewModel = value;
         }
+    }
 
 
-        [ObservableProperty]
-        Author author;
+    [ObservableProperty]
+    Author author;
 
 
-        public async Task CreateAuthor()
+    public async Task CreateAuthor()
+    {
+        var newAuthor = new Author()
         {
-            var newAuthor = new Author()
-            {
-                Name = Author.Name,
-                Surname = Author.Surname,
-                Email = Author.Email
-            };
+            Name = Author.Name,
+            Surname = Author.Surname,
+            Email = Author.Email
+        };
 
-            var result = await _authorService.CreateAuthorAsync(newAuthor);
+        var result = await _authorService.CreateAuthorAsync(newAuthor);
 
-            if (result.Success)
-                await _authorsViewModel.GetAuthors();
-            else
-                _dialogService.ShowMessage(result.Message ?? "Failed to create author.");
-        }
+        if (result.Success)
+            await _authorsViewModel.GetAuthors();
+        else
+            _dialogService.ShowMessage(result.Message ?? "Failed to create author.");
+    }
 
-        [RelayCommand]
-        public async Task Save()
-        {
+    [RelayCommand]
+    public async Task Save()
+    {
 
-            await CreateAuthor();
-            await Shell.Current.GoToAsync("../", true);
+        await CreateAuthor();
+        await Shell.Current.GoToAsync("../", true);
 
-        }
     }
 }
