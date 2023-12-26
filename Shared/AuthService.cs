@@ -19,24 +19,24 @@ public class AuthService : IAuthService
         try
         {
             var response = await _httpClient.PostAsJsonAsync("auth/login", user);
+            var serviceResponse = await response.Content.ReadFromJsonAsync<ServiceResponse<JwtResponse>>();
 
             if (!response.IsSuccessStatusCode)
             {
-                var message = await response.Content.ReadAsStringAsync();
                 return new ServiceResponse<string>()
                 {
                     Success = false,
-                    Message = message is not null && message.Any() ? message : "Invalid user credentials."
+                    Message = serviceResponse?.Message ?? "Invalid user credentials."
                 };
             }
 
-            var token = await response.Content.ReadAsStringAsync();
+            var token = serviceResponse?.Data?.Token;
 
-            if (token != string.Empty)
+            if (token is not null)
             {
                 _userInfo.Authenticated = true;
                 _userInfo.Username = user.Username;
-                _userInfo.Token = token;
+                _userInfo.Token = $"{token}";
             }
 
             return new ServiceResponse<string>()
@@ -45,12 +45,12 @@ public class AuthService : IAuthService
                 Data = token
             };
         }
-        catch (Exception ex)
+        catch (Exception)
         {
             return new ServiceResponse<string>()
             {
                 Success = false,
-                Message = ex.Message ?? "Failed to login."
+                Message = "Failed to login."
             };
         }
     }
@@ -60,31 +60,29 @@ public class AuthService : IAuthService
         try
         {
             var response = await _httpClient.PostAsJsonAsync("auth/register", user);
+            var serviceResponse = await response.Content.ReadFromJsonAsync<ServiceResponse<string>>();
 
             if (!response.IsSuccessStatusCode)
             {
-                var message = await response.Content.ReadAsStringAsync();
                 return new ServiceResponse<string>()
                 {
                     Success = false,
-                    Message = message is not null && message.Any() ? message : "Invalid user data."
+                    Message = serviceResponse?.Message ?? "Failed to register."
                 };
             }
-
-            var mess = await response.Content.ReadAsStringAsync();
 
             return new ServiceResponse<string>()
             {
                 Success = true,
-                Message = mess
+                Message = serviceResponse?.Message ?? "Invalid user credentials"
             };
         }
-        catch (Exception ex)
+        catch (Exception)
         {
             return new ServiceResponse<string>()
             {
                 Success = false,
-                Message = ex.Message ?? "Failed to login."
+                Message = "Failed to register."
             };
         }
     }
