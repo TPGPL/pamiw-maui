@@ -8,7 +8,7 @@ namespace PamiwMauiApp.ViewModels;
 
 [QueryProperty(nameof(Author), nameof(Author))]
 [QueryProperty(nameof(AuthorsViewModel), nameof(AuthorsViewModel))]
-public partial class NewAuthorViewModel : ObservableObject
+public partial class NewAuthorViewModel : BaseViewModel
 {
     private readonly IAuthorService _authorService;
     private readonly MauiMessageDialogService _dialogService;
@@ -19,6 +19,7 @@ public partial class NewAuthorViewModel : ObservableObject
         _authorService = authorService;
         _authorsViewModel = authorsViewModel;
         _dialogService = dialogService;
+        Title = "Create author";
     }
 
     public AuthorsViewModel AuthorsViewModel

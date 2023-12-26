@@ -8,7 +8,7 @@ using System.Collections.ObjectModel;
 
 namespace PamiwMauiApp.ViewModels;
 
-public partial class BooksViewModel : ObservableObject
+public partial class BooksViewModel : BaseViewModel
 {
     private readonly IBookService _bookService;
     private readonly MauiMessageDialogService _dialogService;
@@ -20,6 +20,7 @@ public partial class BooksViewModel : ObservableObject
     {
         _bookService = bookService;
         _dialogService = dialogService;
+        Title = "Books";
         Books = new ObservableCollection<Book>();
         GetBooks();
     }

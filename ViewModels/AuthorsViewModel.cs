@@ -8,7 +8,7 @@ using System.Collections.ObjectModel;
 
 namespace PamiwMauiApp.ViewModels;
 
-public partial class AuthorsViewModel : ObservableObject
+public partial class AuthorsViewModel : BaseViewModel
 {
     private readonly IAuthorService _authorService;
     private readonly MauiMessageDialogService _dialogService;
@@ -21,6 +21,7 @@ public partial class AuthorsViewModel : ObservableObject
         _authorService = authorService;
         Authors = new ObservableCollection<Author>();
         _dialogService = dialogService;
+        Title = "Authors";
         GetAuthors();
     }
 
@@ -36,7 +37,8 @@ public partial class AuthorsViewModel : ObservableObject
             {
                 Authors.Add(a);
             }
-        } else
+        }
+        else
         {
             _dialogService.ShowMessage(response.Message ?? "Failed to get authors.");
         }

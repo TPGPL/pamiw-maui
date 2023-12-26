@@ -8,7 +8,7 @@ namespace PamiwMauiApp.ViewModels;
 
 [QueryProperty(nameof(Book), nameof(Book))]
 [QueryProperty(nameof(BooksViewModel), nameof(BooksViewModel))]
-public partial class BookDetailsViewModel : ObservableObject
+public partial class BookDetailsViewModel : BaseViewModel
 {
     private readonly IBookService _bookService;
     private readonly MauiMessageDialogService _dialogService;
@@ -19,6 +19,7 @@ public partial class BookDetailsViewModel : ObservableObject
         _bookService = bookService;
         _booksViewModel = booksViewModel;
         _dialogService = dialogService;
+        Title = "Edit book";
     }
 
     public BooksViewModel BooksViewModel

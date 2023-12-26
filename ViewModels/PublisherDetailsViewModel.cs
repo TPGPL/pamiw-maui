@@ -8,7 +8,7 @@ namespace PamiwMauiApp.ViewModels;
 
 [QueryProperty(nameof(Publisher), nameof(Publisher))]
 [QueryProperty(nameof(PublishersViewModel), nameof(PublishersViewModel))]
-public partial class PublisherDetailsViewModel : ObservableObject
+public partial class PublisherDetailsViewModel : BaseViewModel
 {
     private readonly IPublisherService _publisherService;
     private readonly MauiMessageDialogService _dialogService;
@@ -19,6 +19,7 @@ public partial class PublisherDetailsViewModel : ObservableObject
         _publisherService = publisherService;
         _publishersViewModel = publishersViewModel;
         _dialogService = dialogService;
+        Title = "Edit publisher";
     }
 
     public PublishersViewModel PublishersViewModel

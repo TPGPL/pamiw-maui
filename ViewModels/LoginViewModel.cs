@@ -7,7 +7,7 @@ using PamiwMauiApp.Views;
 
 namespace PamiwMauiApp.ViewModels;
 
-public partial class LoginViewModel : ObservableObject
+public partial class LoginViewModel : BaseViewModel
 {
     private readonly MauiMessageDialogService _messageDialogService;
     private readonly IAuthService _authService;
@@ -19,6 +19,7 @@ public partial class LoginViewModel : ObservableObject
     {
         _messageDialogService = messageDialogService;
         _authService = authService;
+        Title = "Sign in";
     }
 
     [RelayCommand]
@@ -31,7 +32,11 @@ public partial class LoginViewModel : ObservableObject
             ConfirmPassword = User.ConfirmPassword
         };
 
+        IsBusy = true;
+
         var response = await _authService.LoginAsync(userData);
+
+        IsBusy = false;
 
         if (!response.Success)
         {

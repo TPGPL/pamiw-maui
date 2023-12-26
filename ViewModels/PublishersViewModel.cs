@@ -8,7 +8,7 @@ using System.Collections.ObjectModel;
 
 namespace PamiwMauiApp.ViewModels;
 
-public partial class PublishersViewModel : ObservableObject
+public partial class PublishersViewModel : BaseViewModel
 {
     private readonly IPublisherService _publisherService;
     private readonly MauiMessageDialogService _dialogService;
@@ -20,6 +20,7 @@ public partial class PublishersViewModel : ObservableObject
     {
         _publisherService = publisherService;
         _dialogService = dialogService;
+        Title = "Publishers";
         Publishers = new ObservableCollection<Publisher>();
         GetPublishers();
     }
@@ -36,7 +37,8 @@ public partial class PublishersViewModel : ObservableObject
             {
                 Publishers.Add(a);
             }
-        } else
+        }
+        else
         {
             _dialogService.ShowMessage(response.Message ?? "Failed to get publishers.");
         }

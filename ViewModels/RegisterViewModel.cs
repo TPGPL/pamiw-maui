@@ -6,7 +6,7 @@ using PamiwShared.Models;
 
 namespace PamiwMauiApp.ViewModels;
 
-public partial class RegisterViewModel : ObservableObject
+public partial class RegisterViewModel : BaseViewModel
 {
     private readonly MauiMessageDialogService _messageDialogService;
     private readonly IAuthService _authService;
@@ -18,6 +18,7 @@ public partial class RegisterViewModel : ObservableObject
     {
         _messageDialogService = messageDialogService;
         _authService = authService;
+        Title = "Sign up";
     }
 
     [RelayCommand]
