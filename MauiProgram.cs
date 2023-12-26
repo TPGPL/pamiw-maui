@@ -1,8 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
-using pamiw_pwa.Services;
-using PamiwMauiApp.Components;
-using PamiwMauiApp.Models;
 using PamiwMauiApp.Services;
+using PamiwMauiApp.Components;
+using PamiwShared.Models;
 using PamiwMauiApp.ViewModels;
 using PamiwMauiApp.Views;
 

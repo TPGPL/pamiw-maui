@@ -1,5 +1,4 @@
-﻿using PamiwMauiApp.Models;
-using PamiwMauiApp.ViewModels;
+﻿using PamiwMauiApp.ViewModels;
 using PamiwMauiApp.Views;
 
 namespace PamiwMauiApp
