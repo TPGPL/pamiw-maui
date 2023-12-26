@@ -1,7 +1,7 @@
-﻿using PamiwMauiApp.Models;
+﻿using PamiwShared.Models;
 using System.Net.Http.Json;
 
-namespace pamiw_pwa.Services;
+namespace PamiwMauiApp.Services;
 
 public class AuthService : IAuthService
 {

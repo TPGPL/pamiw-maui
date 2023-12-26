@@ -1,6 +1,6 @@
-﻿using PamiwMauiApp.Models;
+﻿using PamiwShared.Models;
 
-namespace pamiw_pwa.Services;
+namespace PamiwMauiApp.Services;
 
 public interface IAuthService
 {

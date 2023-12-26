@@ -1,4 +1,4 @@
-﻿using PamiwMauiApp.Models;
+﻿using PamiwShared.Models;
 
 namespace PamiwMauiApp.Services;
 

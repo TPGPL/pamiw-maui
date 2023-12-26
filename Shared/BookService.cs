@@ -1,4 +1,4 @@
-﻿using PamiwMauiApp.Models;
+﻿using PamiwShared.Models;
 using System.Net.Http.Json;
 
 namespace PamiwMauiApp.Services;

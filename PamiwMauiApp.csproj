@@ -68,6 +68,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\PamiwShared\PamiwShared.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <Compile Update="Views\BookDetailsView.xaml.cs">
 	    <DependentUpon>BookDetailsView.xaml</DependentUpon>
 	  </Compile>
