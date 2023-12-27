@@ -6,11 +6,48 @@
 
     <!-- Note: For Android please see also Platforms\Android\Resources\values\colors.xml -->
 
-    <Color x:Key="Primary">#512BD4</Color>
-    <Color x:Key="PrimaryDark">#ac99ea</Color>
+    <Color x:Key="TextColorBody__Light">#212529</Color>
+    <Color x:Key="BodyBg__Light">#ffffff</Color>
+    <Color x:Key="TextColorSecondary__Light">#595c5f</Color>
+    <Color x:Key="SecondaryBg__Light">#e9ecef</Color>
+    <Color x:Key="TextColorTertiary__Light">#e9ecef</Color>
+    <Color x:Key="TertiaryBg__Light">#f8f9fa</Color>
+    <Color x:Key="TextEmphasis__Light">#000000</Color>
+    <Color x:Key="Border__Light">#dee2e6</Color>
+    <Color x:Key="LightSubtleBg_Light">#fcfcfd</Color>
+    <Color x:Key="TextColorLightSubtle__Light">#f8f9fa</Color>
+    <Color x:Key="DarkSubtleBg_Light">#ced4da</Color>
+
+
+    <Color x:Key="TextColorBody__Dark">#dee2e6</Color>
+    <Color x:Key="BodyBg__Dark">#212529</Color>
+    <Color x:Key="TextColorSecondary__Dark">#aeb2b6</Color>
+    <Color x:Key="SecondaryBg__Dark">#343a40</Color>
+    <Color x:Key="TextColorTertiary__Dark">#7f8387</Color>
+    <Color x:Key="TertiaryBg__Dark">#2b3035</Color>
+    <Color x:Key="TextEmphasis__Dark">#ffffff</Color>
+    <Color x:Key="Border__Dark">#495057</Color>
+    <Color x:Key="LightSubtleBg__Dark">#f8f9fa</Color>
+    <Color x:Key="TextColorLightSubtle__Dark">#343a40</Color>
+    <Color x:Key="DarkSubtleBg__Dark">#1a1d20</Color>
+
+
+    <Color x:Key="Primary">#007bff</Color>
+    <Color x:Key="BtnSecondary">#6c757d</Color>
+    <Color x:Key="Danger">#dc3545</Color>
+
+
+    <Color x:Key="BgLight">#dee2e6</Color>
+    <Color x:Key="BgDark">#212529</Color>
+    <Color x:Key="BgDarkSubtle">#1a1d20</Color>
+    <Color x:Key="Light">#f8f9fa</Color>
+    <Color x:Key="BgSecondaryLight">#e9ecef</Color>
+    <Color x:Key="PlaceholderLight">#909294</Color>
+
+    <Color x:Key="PrimaryDark">#007bff</Color>
     <Color x:Key="PrimaryDarkText">#242424</Color>
-    <Color x:Key="Secondary">#DFD8F7</Color>
-    <Color x:Key="SecondaryDarkText">#9880e5</Color>
+    <Color x:Key="Secondary">#f8f9fa</Color>
+    <Color x:Key="SecondaryDarkText">#f8f9fa</Color>
     <Color x:Key="Tertiary">#2B0B98</Color>
 
     <Color x:Key="White">White</Color>
