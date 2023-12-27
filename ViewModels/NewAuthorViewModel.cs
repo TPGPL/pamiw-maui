@@ -13,13 +13,15 @@ public partial class NewAuthorViewModel : BaseViewModel
     private readonly IAuthorService _authorService;
     private readonly MauiMessageDialogService _dialogService;
     private AuthorsViewModel _authorsViewModel;
+    [ObservableProperty]
+    LocalizationResourceManager localizationResourceManager;
 
-    public NewAuthorViewModel(IAuthorService authorService, AuthorsViewModel authorsViewModel, MauiMessageDialogService dialogService)
+    public NewAuthorViewModel(IAuthorService authorService, AuthorsViewModel authorsViewModel, MauiMessageDialogService dialogService, LocalizationResourceManager localizationResourceManager)
     {
         _authorService = authorService;
         _authorsViewModel = authorsViewModel;
         _dialogService = dialogService;
-        Title = "Create author";
+        this.localizationResourceManager = localizationResourceManager;
     }
 
     public AuthorsViewModel AuthorsViewModel
