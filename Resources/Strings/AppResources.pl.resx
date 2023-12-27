@@ -117,8 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AuthorName" xml:space="preserve">
+    <value>Imię</value>
+  </data>
   <data name="AuthorsHeader" xml:space="preserve">
     <value>Autorzy</value>
+  </data>
+  <data name="AuthorSurname" xml:space="preserve">
+    <value>Nazwisko</value>
   </data>
   <data name="BookAuthor" xml:space="preserve">
     <value>ID autora</value>
@@ -177,6 +183,9 @@
   <data name="HomeText" xml:space="preserve">
     <value>Strona główna aplikacji Pamiw MAUI.</value>
   </data>
+  <data name="LanguageLabel" xml:space="preserve">
+    <value>Język aplikacji</value>
+  </data>
   <data name="LoginButton" xml:space="preserve">
     <value>Zaloguj się</value>
   </data>
@@ -210,8 +219,17 @@
   <data name="RegisterNavButton" xml:space="preserve">
     <value>Utwórz nowe konto</value>
   </data>
+  <data name="SaveButton" xml:space="preserve">
+    <value>Zapisz zmiany</value>
+  </data>
   <data name="SettingsButton" xml:space="preserve">
     <value>Ustawienia</value>
+  </data>
+  <data name="SettingsHeader" xml:space="preserve">
+    <value>Ustawienia</value>
+  </data>
+  <data name="ThemeLabel" xml:space="preserve">
+    <value>Motyw aplikacji</value>
   </data>
   <data name="UpdateButton" xml:space="preserve">
     <value>Aktualizuj</value>

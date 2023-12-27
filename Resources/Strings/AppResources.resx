@@ -183,6 +183,9 @@
   <data name="HomeText" xml:space="preserve">
     <value>Home of the Pamiw MAUI App.</value>
   </data>
+  <data name="LanguageLabel" xml:space="preserve">
+    <value>Select app language</value>
+  </data>
   <data name="LoginButton" xml:space="preserve">
     <value>Sign in</value>
   </data>
@@ -216,8 +219,17 @@
   <data name="RegisterNavButton" xml:space="preserve">
     <value>Create new account</value>
   </data>
+  <data name="SaveButton" xml:space="preserve">
+    <value>Apply changes</value>
+  </data>
   <data name="SettingsButton" xml:space="preserve">
     <value>Settings</value>
+  </data>
+  <data name="SettingsHeader" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="ThemeLabel" xml:space="preserve">
+    <value>Select app theme</value>
   </data>
   <data name="UpdateButton" xml:space="preserve">
     <value>Update</value>
