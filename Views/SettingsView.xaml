@@ -2,10 +2,10 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PamiwMauiApp.Views.SettingsView"
-             Title="{Binding Title}">
+             Title="{Binding LocalizationResourceManager[SettingsHeader], Mode=OneWay}">
     <VerticalStackLayout Margin="10" Spacing="10">
-        <Picker Title="Select app theme" ItemsSource="{Binding Themes}" SelectedItem="{Binding SelectedTheme}"/>
-        <Picker Title="Select app language" ItemsSource="{Binding Languages}" SelectedItem="{Binding SelectedLanguage}"/>
-        <Button Text="Save changes" Command="{Binding SaveChangesCommand}"/>
+        <Picker Title="{Binding LocalizationResourceManager[ThemeLabel], Mode=OneWay}" ItemsSource="{Binding Themes}" SelectedItem="{Binding SelectedTheme}"/>
+        <Picker Title="{Binding LocalizationResourceManager[LanguageLabel], Mode=OneWay}" ItemsSource="{Binding Languages}" SelectedItem="{Binding SelectedLanguage}"/>
+        <Button Text="{Binding LocalizationResourceManager[SaveButton], Mode=OneWay}" Command="{Binding SaveChangesCommand}"/>
     </VerticalStackLayout>
 </ContentPage>
