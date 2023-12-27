@@ -17,6 +17,7 @@ namespace PamiwMauiApp
             Routing.RegisterRoute(nameof(BookDetailsView), typeof(BookDetailsView));
             Routing.RegisterRoute(nameof(NewBookView), typeof(NewBookView));
             Routing.RegisterRoute(nameof(RegisterPage), typeof(RegisterPage));
+            Routing.RegisterRoute(nameof(SettingsView), typeof(SettingsView));
         }
     }
 }

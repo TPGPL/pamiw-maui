@@ -23,4 +23,10 @@ public partial class AppShellViewModel : ObservableObject
 
         await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
     }
+
+    [RelayCommand]
+    public async Task Settings()
+    {
+        await Shell.Current.GoToAsync(nameof(SettingsView));
+    }
 }

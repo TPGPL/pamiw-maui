@@ -60,6 +60,7 @@ namespace PamiwMauiApp
             builder.Services.AddTransient<BookDetailsViewModel>();
             builder.Services.AddTransient<NewBookViewModel>();
             builder.Services.AddTransient<RegisterViewModel>();
+            builder.Services.AddTransient<SettingsViewModel>();
 
             return builder;
         }
@@ -78,6 +79,7 @@ namespace PamiwMauiApp
             builder.Services.AddTransient<BookDetailsView>();
             builder.Services.AddTransient<NewBookView>();
             builder.Services.AddTransient<RegisterPage>();
+            builder.Services.AddTransient<SettingsView>();
 
             return builder;
         }

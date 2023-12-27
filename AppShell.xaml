@@ -37,6 +37,9 @@
         </Tab>
     </FlyoutItem>
     <Shell.FlyoutFooter>
-        <Button Text="Sign out" Command="{Binding SignOutCommand}"></Button>
+        <VerticalStackLayout>
+            <Button Text="Sign out" Margin="5,5,5,0" Command="{Binding SignOutCommand}"></Button>
+            <Button Text="Settings" BackgroundColor="{StaticResource BtnSecondary}" Margin="5" Command="{Binding SettingsCommand}"></Button>
+        </VerticalStackLayout>
     </Shell.FlyoutFooter>
 </Shell>
