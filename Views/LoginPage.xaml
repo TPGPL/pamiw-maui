@@ -12,23 +12,17 @@
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Label Text="Username" Grid.Row="0" Grid.Column="0"/>
-            <Entry Text="{Binding Username}" Grid.Row="0" Grid.Column="1"/>
-
-            <Label Text="Password" Grid.Row="1" Grid.Column="0"/>
-            <Entry IsPassword="True" Grid.Row="1"  Grid.Column="1" Text="{Binding Password}" />
-
-            <Label Text="Confirm password" Grid.Row="2" Grid.Column="0"/>
-            <Entry IsPassword="True" Grid.Row="2" Grid.Column="1" Text="{Binding ConfirmPassword}" />
+            <Entry Placeholder="Username" Text="{Binding Username}" Grid.Row="0" Grid.Column="1"/>
+            <Entry Placeholder="Password" IsPassword="True" Grid.Row="1"  Grid.Column="1" Text="{Binding Password}" />
+            <Entry Placeholder="Confirm password" IsPassword="True" Grid.Row="2" Grid.Column="1" Text="{Binding ConfirmPassword}" />
         </Grid>
         <VerticalStackLayout >
-            <Button Command="{Binding LoginCommand}" Text="Sign in" >
+            <Button Command="{Binding LoginCommand}" Margin="10,5,10,5" Text="Sign in" >
             </Button>
-            <Button BackgroundColor="LightSlateGray" Margin="0,5,0,0" Command="{Binding RegisterCommand}" Text="Create new account" >
+            <Button BackgroundColor="{StaticResource BtnSecondary}" Margin="10,5,10,0" Command="{Binding RegisterCommand}" Text="Create new account" >
             </Button>
         </VerticalStackLayout>
         <ActivityIndicator IsRunning="{Binding IsBusy}" />
