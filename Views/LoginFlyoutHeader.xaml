@@ -2,8 +2,8 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PamiwMauiApp.Views.LoginFlyoutHeader">
-    <StackLayout Padding="10">
-        <Label Text="Signed in as:" FontSize="14" />
-        <Label x:Name="loginLabel" FontSize="16" FontAttributes="Bold"/>
-    </StackLayout>
+    <HorizontalStackLayout Padding="15" Spacing="5">
+        <Label Text="Signed in as " FontSize="14" />
+        <Label x:Name="loginLabel" FontSize="14" FontAttributes="Bold"/>
+    </HorizontalStackLayout>
 </ContentView>

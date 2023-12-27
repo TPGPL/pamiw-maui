@@ -13,13 +13,15 @@ public partial class PublisherDetailsViewModel : BaseViewModel
     private readonly IPublisherService _publisherService;
     private readonly MauiMessageDialogService _dialogService;
     private PublishersViewModel _publishersViewModel;
+    [ObservableProperty]
+    LocalizationResourceManager localizationResourceManager;
 
-    public PublisherDetailsViewModel(IPublisherService publisherService, PublishersViewModel publishersViewModel, MauiMessageDialogService dialogService)
+    public PublisherDetailsViewModel(IPublisherService publisherService, PublishersViewModel publishersViewModel, MauiMessageDialogService dialogService, LocalizationResourceManager localizationResourceManager)
     {
         _publisherService = publisherService;
         _publishersViewModel = publishersViewModel;
         _dialogService = dialogService;
-        Title = "Edit publisher";
+        this.localizationResourceManager = localizationResourceManager;
     }
 
     public PublishersViewModel PublishersViewModel
