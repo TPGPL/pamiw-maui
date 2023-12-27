@@ -23,7 +23,6 @@ public partial class PublishersViewModel : BaseViewModel
         _dialogService = dialogService;
         Publishers = new ObservableCollection<Publisher>();
         this.localizationResourceManager = localizationResourceManager;
-        GetPublishers();
     }
 
     public async Task GetPublishers()

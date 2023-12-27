@@ -4,9 +4,18 @@ namespace PamiwMauiApp.Views;
 
 public partial class BooksView : ContentPage
 {
-	public BooksView(BooksViewModel booksViewModel)
-	{
-		InitializeComponent();
-		BindingContext = booksViewModel;
-	}
+    private readonly BooksViewModel _viewModel;
+
+    public BooksView(BooksViewModel viewModel)
+    {
+        InitializeComponent();
+        BindingContext = viewModel;
+        _viewModel = viewModel;
+        Loaded += OnPageLoaded;
+    }
+
+    private async void OnPageLoaded(object sender, EventArgs args)
+    {
+        await _viewModel.GetBooks();
+    }
 }

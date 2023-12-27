@@ -24,7 +24,6 @@ public partial class AuthorsViewModel : BaseViewModel
         Authors = new ObservableCollection<Author>();
         _dialogService = dialogService;
         this.localizationResourceManager = localizationResourceManager;
-        GetAuthors();
     }
 
     public async Task GetAuthors()

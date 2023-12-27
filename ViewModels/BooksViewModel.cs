@@ -24,7 +24,6 @@ public partial class BooksViewModel : BaseViewModel
         _dialogService = dialogService;
         Books = new ObservableCollection<Book>();
         this.localizationResourceManager = localizationResourceManager;
-        GetBooks();
     }
 
     public async Task GetBooks()
