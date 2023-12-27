@@ -2,9 +2,9 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PamiwMauiApp.Views.NewBookView"
-             Title="{Binding Title}">
+             Title="{Binding LocalizationResourceManager[CreateBookHeader], Mode=OneWay}">
     <VerticalStackLayout>
-        <Grid BindingContext="{Binding Book}"  Margin="10">
+        <Grid Margin="10" RowSpacing="10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -15,31 +15,24 @@
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Label Text="Title:" Grid.Row="0" Grid.Column="0"/>
-            <Entry Text="{Binding Title}" Grid.Row="0" Grid.Column="1"/>
+            <Entry Placeholder="{Binding LocalizationResourceManager[BookTitle], Mode=OneWay}" Grid.Row="0" Grid.Column="1" Text="{Binding Book.Title}" />
+            <Entry Placeholder="{Binding LocalizationResourceManager[BookAuthor], Mode=OneWay}" Grid.Row="1" Keyboard="Numeric" Grid.Column="1" Text="{Binding Book.AuthorID}" />
+            <Entry Placeholder="{Binding LocalizationResourceManager[BookPublisher], Mode=OneWay}" Grid.Row="2" Keyboard="Numeric" Grid.Column="1" Text="{Binding Book.PublisherID}" />
+            <Entry Placeholder="{Binding LocalizationResourceManager[BookPageCount], Mode=OneWay}" Grid.Row="3" Keyboard="Numeric" Grid.Column="1" Text="{Binding Book.PageCount}" />
 
-            <Label Text="Author ID:" Grid.Row="1" Grid.Column="0"/>
-            <Entry Grid.Row="1" Keyboard="Numeric" Grid.Column="1" Text="{Binding AuthorID}" />
+            <VerticalStackLayout Grid.Row="4" Spacing="5">
+                <Label Text="{Binding LocalizationResourceManager[BookDate], Mode=OneWay}"/>
+                <DatePicker Date="{Binding Book.ReleaseDate}"/>
+            </VerticalStackLayout>
 
-            <Label Text="Publisher ID:" Grid.Row="2" Grid.Column="0"/>
-            <Entry Grid.Row="2" Keyboard="Numeric" Grid.Column="1" Text="{Binding PublisherID}" />
-
-            <Label Text="Page count:" Grid.Row="3" Grid.Column="0"/>
-            <Entry Grid.Row="3" Keyboard="Numeric" Grid.Column="1" Text="{Binding PageCount}" />
-
-            <Label Text="Release date:" Grid.Row="4" Grid.Column="0"/>
-            <Entry Text="{Binding ReleaseData}" Grid.Row="4" Grid.Column="1"/>
-
-            <Label Text="ISBN:" Grid.Row="5" Grid.Column="0"/>
-            <Entry Text="{Binding ISBN}" Grid.Row="5" Grid.Column="1"/>
+            <Entry Placeholder="{Binding LocalizationResourceManager[BookISBN], Mode=OneWay}" Text="{Binding Book.ISBN}" Grid.Row="5" Grid.Column="1"/>
         </Grid>
-        <HorizontalStackLayout >
-            <Button Command="{Binding SaveCommand}" Text="Save" >
+        <VerticalStackLayout>
+            <Button Margin="10,0" Command="{Binding SaveCommand}" Text="{Binding LocalizationResourceManager[CreateButton], Mode=OneWay}" >
             </Button>
-        </HorizontalStackLayout>
+        </VerticalStackLayout>
     </VerticalStackLayout>
 </ContentPage>

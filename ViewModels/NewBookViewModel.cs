@@ -13,13 +13,15 @@ public partial class NewBookViewModel : BaseViewModel
     private readonly IBookService _bookService;
     private readonly MauiMessageDialogService _dialogService;
     private BooksViewModel _booksViewModel;
+    [ObservableProperty]
+    LocalizationResourceManager localizationResourceManager;
 
-    public NewBookViewModel(IBookService bookService, BooksViewModel booksViewModel, MauiMessageDialogService dialogService)
+    public NewBookViewModel(IBookService bookService, BooksViewModel booksViewModel, MauiMessageDialogService dialogService, LocalizationResourceManager localizationResourceManager)
     {
         _bookService = bookService;
         _booksViewModel = booksViewModel;
         _dialogService = dialogService;
-        Title = "Create book";
+        this.localizationResourceManager = localizationResourceManager;
     }
 
     public BooksViewModel BooksViewModel
