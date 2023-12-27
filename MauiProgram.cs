@@ -40,6 +40,7 @@ namespace PamiwMauiApp
 
             builder.Services.AddSingleton<HttpClient>(sp => new HttpClient() { BaseAddress = new Uri("http://localhost:8081/api/") });
             builder.Services.AddSingleton<UserInfo>();
+            builder.Services.AddSingleton<LocalizationResourceManager>();
 
             return builder;
         }
