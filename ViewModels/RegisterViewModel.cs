@@ -14,11 +14,14 @@ public partial class RegisterViewModel : BaseViewModel
     [ObservableProperty]
     UserRegister user = new UserRegister();
 
-    public RegisterViewModel(MauiMessageDialogService messageDialogService, IAuthService authService)
+    [ObservableProperty]
+    LocalizationResourceManager localizationResourceManager;
+
+    public RegisterViewModel(MauiMessageDialogService messageDialogService, IAuthService authService, LocalizationResourceManager localizationResourceManager)
     {
         _messageDialogService = messageDialogService;
         _authService = authService;
-        Title = "Sign up";
+        this.localizationResourceManager = localizationResourceManager;
     }
 
     [RelayCommand]

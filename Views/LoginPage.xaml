@@ -2,9 +2,9 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PamiwMauiApp.Views.LoginPage"
-             Title="{Binding Title}" Shell.FlyoutBehavior="Disabled">
+             Title="{Binding LocalizationResourceManager[LoginHeader], Mode=OneWay}" Shell.FlyoutBehavior="Disabled">
     <VerticalStackLayout>
-        <Grid BindingContext="{Binding User}"  Margin="10" RowSpacing="10">
+        <Grid  Margin="10" RowSpacing="10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -14,15 +14,15 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-
-            <Entry Placeholder="Username" Text="{Binding Username}" Grid.Row="0" Grid.Column="1"/>
-            <Entry Placeholder="Password" IsPassword="True" Grid.Row="1"  Grid.Column="1" Text="{Binding Password}" />
-            <Entry Placeholder="Confirm password" IsPassword="True" Grid.Row="2" Grid.Column="1" Text="{Binding ConfirmPassword}" />
+            
+            <Entry Placeholder="{Binding LocalizationResourceManager[UsernamePlaceholder], Mode=OneWay}" Text="{Binding User.Username}" Grid.Row="0" Grid.Column="1"/>
+            <Entry Placeholder="{Binding LocalizationResourceManager[PasswordPlaceholder], Mode=OneWay}" IsPassword="True" Grid.Row="1"  Grid.Column="1" Text="{Binding User.Password}" />
+            <Entry Placeholder="{Binding LocalizationResourceManager[ConfirmPasswordPlaceholder]}" IsPassword="True" Grid.Row="2" Grid.Column="1" Text="{Binding User.ConfirmPassword}" />
         </Grid>
         <VerticalStackLayout >
-            <Button Command="{Binding LoginCommand}" Margin="10,5,10,5" Text="Sign in" >
+            <Button Command="{Binding LoginCommand}" Margin="10,5,10,5" Text="{Binding LocalizationResourceManager[LoginButton], Mode=OneWay}" >
             </Button>
-            <Button BackgroundColor="{StaticResource BtnSecondary}" Margin="10,5,10,0" Command="{Binding RegisterCommand}" Text="Create new account" >
+            <Button BackgroundColor="{StaticResource BtnSecondary}" Margin="10,5,10,0" Command="{Binding RegisterCommand}" Text="{Binding LocalizationResourceManager[RegisterNavButton], Mode=OneWay}" >
             </Button>
         </VerticalStackLayout>
         <ActivityIndicator IsRunning="{Binding IsBusy}" />

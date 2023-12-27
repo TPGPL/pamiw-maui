@@ -15,11 +15,14 @@ public partial class LoginViewModel : BaseViewModel
     [ObservableProperty]
     UserLogin user = new UserLogin();
 
-    public LoginViewModel(MauiMessageDialogService messageDialogService, IAuthService authService)
+    [ObservableProperty]
+    LocalizationResourceManager localizationResourceManager;
+
+    public LoginViewModel(MauiMessageDialogService messageDialogService, IAuthService authService, LocalizationResourceManager localizationResourceManager)
     {
         _messageDialogService = messageDialogService;
         _authService = authService;
-        Title = "Sign in";
+        this.localizationResourceManager = localizationResourceManager;
     }
 
     [RelayCommand]
