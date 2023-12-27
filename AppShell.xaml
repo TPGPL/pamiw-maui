@@ -7,13 +7,13 @@
     xmlns:views="clr-namespace:PamiwMauiApp.Views"
     Shell.FlyoutBehavior="Flyout"
     Title="PamiwMauiApp">
-    
+
     <ShellContent
     Title="Login"
     ContentTemplate="{DataTemplate views:LoginPage}"
     Route="LoginPage" FlyoutItemIsVisible="False" />
-    
-    <FlyoutItem Title="Home">
+
+    <FlyoutItem Title="{Binding LocalizationResourceManager[HomeHeader], Mode=OneWay}">
         <Tab>
             <ShellContent
             Title="Home"
@@ -21,25 +21,25 @@
             Route="MainPage" />
         </Tab>
     </FlyoutItem>
-    <FlyoutItem Title="Books">
+    <FlyoutItem Title="{Binding LocalizationResourceManager[BooksHeader], Mode=OneWay}">
         <Tab>
             <ShellContent Title="Books" ContentTemplate="{DataTemplate views:BooksView}" Route="BooksView" />
         </Tab>
     </FlyoutItem>
-    <FlyoutItem Title="Authors">
+    <FlyoutItem Title="{Binding LocalizationResourceManager[AuthorsHeader], Mode=OneWay}">
         <Tab>
             <ShellContent Title="Authors" ContentTemplate="{DataTemplate views:AuthorsView}" Route="AuthorsView" />
         </Tab>
     </FlyoutItem>
-    <FlyoutItem Title="Publishers">
+    <FlyoutItem Title="{Binding LocalizationResourceManager[PublishersHeader], Mode=OneWay}">
         <Tab>
             <ShellContent Title="Publishers" ContentTemplate="{DataTemplate views:PublishersView}" Route="PublishersView" />
         </Tab>
     </FlyoutItem>
     <Shell.FlyoutFooter>
         <VerticalStackLayout>
-            <Button Text="Sign out" Margin="5,5,5,0" Command="{Binding SignOutCommand}"></Button>
-            <Button Text="Settings" BackgroundColor="{StaticResource BtnSecondary}" Margin="5" Command="{Binding SettingsCommand}"></Button>
+            <Button Text="{Binding LocalizationResourceManager[LogoutButton], Mode=OneWay}" Margin="5,5,5,0" Command="{Binding SignOutCommand}"></Button>
+            <Button Text="{Binding LocalizationResourceManager[SettingsButton], Mode=OneWay}" BackgroundColor="{StaticResource BtnSecondary}" Margin="5" Command="{Binding SettingsCommand}"></Button>
         </VerticalStackLayout>
     </Shell.FlyoutFooter>
 </Shell>

@@ -9,9 +9,13 @@ public partial class AppShellViewModel : ObservableObject
 {
     private readonly UserInfo _userInfo;
 
-    public AppShellViewModel(UserInfo userInfo)
+    [ObservableProperty]
+    LocalizationResourceManager localizationResourceManager;
+
+    public AppShellViewModel(UserInfo userInfo, LocalizationResourceManager localizationResourceManager)
     {
         _userInfo = userInfo;
+        this.localizationResourceManager = localizationResourceManager;
     }
 
     [RelayCommand]
