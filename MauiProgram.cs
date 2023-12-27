@@ -53,6 +53,7 @@ namespace PamiwMauiApp
             builder.Services.AddSingleton<BooksViewModel>();
             builder.Services.AddSingleton<LoginViewModel>();
             builder.Services.AddSingleton<AppShellViewModel>();
+            builder.Services.AddSingleton<MainPageViewModel>();
 
             builder.Services.AddTransient<AuthorDetailsViewModel>();
             builder.Services.AddTransient<NewAuthorViewModel>();
@@ -72,6 +73,7 @@ namespace PamiwMauiApp
             builder.Services.AddSingleton<AuthorsView>();
             builder.Services.AddSingleton<PublishersView>();
             builder.Services.AddSingleton<LoginPage>();
+            builder.Services.AddSingleton<MainPage>();
 
             builder.Services.AddTransient<AuthorDetailsView>();
             builder.Services.AddTransient<NewAuthorView>();

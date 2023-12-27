@@ -2,14 +2,14 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PamiwMauiApp.MainPage"
-             Title="Home">
+             Title="{Binding LocalizationResourceManager[HomeHeader], Mode=OneWay}">
 
     <ScrollView>
         <VerticalStackLayout
             Padding="30,0"
             Spacing="25">
             <Label
-                Text="Home of the Pamiw MAUI App."
+                Text="{Binding LocalizationResourceManager[HomeText], Mode=OneWay}"
                 Style="{StaticResource Headline}"
                 SemanticProperties.HeadingLevel="Level1" />
         </VerticalStackLayout>
