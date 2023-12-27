@@ -3,9 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PamiwMauiApp.Views.BooksView"
              xmlns:viewmodel="clr-namespace:PamiwMauiApp.ViewModels"
-             Title="{Binding Title}">
+             Title="{Binding LocalizationResourceManager[BooksHeader], Mode=OneWay}">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="New" Command="{Binding NewCommand}"/>
+        <ToolbarItem Text="{Binding LocalizationResourceManager[NewButton], Mode=OneWay}" Command="{Binding NewCommand}"/>
     </ContentPage.ToolbarItems>
     <ScrollView>
         <VerticalStackLayout

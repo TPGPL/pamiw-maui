@@ -15,13 +15,15 @@ public partial class BooksViewModel : BaseViewModel
     public ObservableCollection<Book> Books { get; private set; }
     [ObservableProperty]
     private Book? selectedBook;
+    [ObservableProperty]
+    LocalizationResourceManager localizationResourceManager;
 
-    public BooksViewModel(IBookService bookService, MauiMessageDialogService dialogService)
+    public BooksViewModel(IBookService bookService, MauiMessageDialogService dialogService, LocalizationResourceManager localizationResourceManager)
     {
         _bookService = bookService;
         _dialogService = dialogService;
-        Title = "Books";
         Books = new ObservableCollection<Book>();
+        this.localizationResourceManager = localizationResourceManager;
         GetBooks();
     }
 

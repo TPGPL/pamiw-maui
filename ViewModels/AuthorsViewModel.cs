@@ -15,13 +15,15 @@ public partial class AuthorsViewModel : BaseViewModel
     public ObservableCollection<Author> Authors { get; private set; }
     [ObservableProperty]
     private Author? selectedAuthor;
+    [ObservableProperty]
+    LocalizationResourceManager localizationResourceManager;
 
-    public AuthorsViewModel(IAuthorService authorService, MauiMessageDialogService dialogService)
+    public AuthorsViewModel(IAuthorService authorService, MauiMessageDialogService dialogService, LocalizationResourceManager localizationResourceManager)
     {
         _authorService = authorService;
         Authors = new ObservableCollection<Author>();
         _dialogService = dialogService;
-        Title = "Authors";
+        this.localizationResourceManager = localizationResourceManager;
         GetAuthors();
     }
 

@@ -15,13 +15,14 @@ public partial class PublishersViewModel : BaseViewModel
     public ObservableCollection<Publisher> Publishers { get; private set; }
     [ObservableProperty]
     private Publisher? selectedPublisher;
-
-    public PublishersViewModel(IPublisherService publisherService, MauiMessageDialogService dialogService)
+    [ObservableProperty]
+    LocalizationResourceManager localizationResourceManager;
+    public PublishersViewModel(IPublisherService publisherService, MauiMessageDialogService dialogService, LocalizationResourceManager localizationResourceManager)
     {
         _publisherService = publisherService;
         _dialogService = dialogService;
-        Title = "Publishers";
         Publishers = new ObservableCollection<Publisher>();
+        this.localizationResourceManager = localizationResourceManager;
         GetPublishers();
     }
 
