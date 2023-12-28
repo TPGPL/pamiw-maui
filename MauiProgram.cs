@@ -3,6 +3,7 @@ using PamiwMauiApp.Services;
 using PamiwMauiApp.Components;
 using PamiwMauiApp.ViewModels;
 using PamiwMauiApp.Views;
+using PamiwMauiApp.Shared;
 
 namespace PamiwMauiApp
 {
@@ -35,6 +36,7 @@ namespace PamiwMauiApp
             builder.Services.AddSingleton<IPublisherService, PublisherService>();
             builder.Services.AddSingleton<IAuthorService, AuthorService>();
             builder.Services.AddSingleton<IAuthService, AuthService>();
+            builder.Services.AddSingleton<IGeoService,GeoService>();
             builder.Services.AddSingleton<MauiMessageDialogService>();
 
             builder.Services.AddSingleton<HttpClient>(sp => new HttpClient() { BaseAddress = new Uri("http://localhost:8081/api/") });
