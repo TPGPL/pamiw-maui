@@ -10,7 +10,7 @@
     <Color x:Key="BodyBg__Light">#ffffff</Color>
     <Color x:Key="TextColorSecondary__Light">#595c5f</Color>
     <Color x:Key="SecondaryBg__Light">#e9ecef</Color>
-    <Color x:Key="TextColorTertiary__Light">#e9ecef</Color>
+    <Color x:Key="TextColorTertiary__Light">#909294</Color>
     <Color x:Key="TertiaryBg__Light">#f8f9fa</Color>
     <Color x:Key="TextEmphasis__Light">#000000</Color>
     <Color x:Key="Border__Light">#dee2e6</Color>
