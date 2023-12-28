@@ -6,8 +6,16 @@
     xmlns:local="clr-namespace:PamiwMauiApp"
     xmlns:views="clr-namespace:PamiwMauiApp.Views"
     Shell.FlyoutBehavior="Flyout"
-    Title="PamiwMauiApp">
+    Title="PamiwMauiApp"
+    FlyoutBackgroundColor="{AppThemeBinding Light={StaticResource SecondaryBg__Light}, Dark={StaticResource DarkSubtleBg__Dark}}">
 
+    <Shell.FlyoutHeader>
+        <HorizontalStackLayout Padding="15" Spacing="5">
+            <Label Text="{Binding LocalizationResourceManager[LoginLabel], Mode=OneWay}" FontSize="14" />
+            <Label Text="{Binding AuthInfo.Username}" FontSize="14" FontAttributes="Bold"/>
+        </HorizontalStackLayout>
+    </Shell.FlyoutHeader>
+    
     <ShellContent
     Title="Login"
     ContentTemplate="{DataTemplate views:LoginPage}"

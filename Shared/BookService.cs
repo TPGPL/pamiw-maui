@@ -6,19 +6,19 @@ namespace PamiwMauiApp.Services;
 public class BookService : IBookService
 {
     private readonly HttpClient _httpClient;
-    private readonly UserInfo _userInfo;
+    private readonly AuthInfo _authInfo;
 
-    public BookService(HttpClient httpClient, UserInfo userInfo)
+    public BookService(HttpClient httpClient, AuthInfo authInfo)
     {
         _httpClient = httpClient;
-        _userInfo = userInfo;
+        _authInfo = authInfo;
     }
 
     public async Task<ServiceResponse<List<Book>>> GetBooksAsync()
     {
         try
         {
-            _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _userInfo.Token);
+            _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _authInfo.Token);
             var response = await _httpClient.GetAsync("books");
 
             if (!response.IsSuccessStatusCode)
@@ -51,7 +51,7 @@ public class BookService : IBookService
     {
         try
         {
-            _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _userInfo.Token);
+            _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _authInfo.Token);
             var response = await _httpClient.GetAsync($"books/{id}");
 
             if (!response.IsSuccessStatusCode)
@@ -84,7 +84,7 @@ public class BookService : IBookService
     {
         try
         {
-            _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _userInfo.Token);
+            _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _authInfo.Token);
             var response = await _httpClient.PutAsJsonAsync($"books/{id}", Book);
             var result = await response.Content.ReadFromJsonAsync<ServiceResponse<Book>>()
                 ?? new ServiceResponse<Book>() { Success = false, Message = "Failed to read data." };
@@ -105,7 +105,7 @@ public class BookService : IBookService
     {
         try
         {
-            _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _userInfo.Token);
+            _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _authInfo.Token);
             var response = await _httpClient.PostAsJsonAsync($"books", Book);
             var result = await response.Content.ReadFromJsonAsync<ServiceResponse<Book>>()
                 ?? new ServiceResponse<Book>() { Success = false, Message = "Failed to read data." };
@@ -126,7 +126,7 @@ public class BookService : IBookService
     {
         try
         {
-            _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _userInfo.Token);
+            _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _authInfo.Token);
             var response = await _httpClient.DeleteAsync($"books/{id}");
             var result = await response.Content.ReadFromJsonAsync<ServiceResponse<Book>>()
                 ?? new ServiceResponse<Book>() { Success = false, Message = "Failed to read data." };

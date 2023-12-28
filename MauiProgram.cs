@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using PamiwMauiApp.Services;
 using PamiwMauiApp.Components;
-using PamiwShared.Models;
 using PamiwMauiApp.ViewModels;
 using PamiwMauiApp.Views;
 
@@ -39,7 +38,7 @@ namespace PamiwMauiApp
             builder.Services.AddSingleton<MauiMessageDialogService>();
 
             builder.Services.AddSingleton<HttpClient>(sp => new HttpClient() { BaseAddress = new Uri("http://localhost:8081/api/") });
-            builder.Services.AddSingleton<UserInfo>();
+            builder.Services.AddSingleton<AuthInfo>();
             builder.Services.AddSingleton<LocalizationResourceManager>();
 
             return builder;

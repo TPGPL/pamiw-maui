@@ -6,19 +6,19 @@ namespace PamiwMauiApp.Services;
 public class PublisherService : IPublisherService
 {
     private readonly HttpClient _httpClient;
-    private readonly UserInfo _userInfo;
+    private readonly AuthInfo _authInfo;
 
-    public PublisherService(HttpClient httpClient, UserInfo userInfo)
+    public PublisherService(HttpClient httpClient, AuthInfo authInfo)
     {
         _httpClient = httpClient;
-        _userInfo = userInfo;
+        _authInfo = authInfo;
     }
 
     public async Task<ServiceResponse<List<Publisher>>> GetPublishersAsync()
     {
         try
         {
-            _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _userInfo.Token);
+            _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _authInfo.Token);
             var response = await _httpClient.GetAsync("publishers");
 
             if (!response.IsSuccessStatusCode)
@@ -51,7 +51,7 @@ public class PublisherService : IPublisherService
     {
         try
         {
-            _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _userInfo.Token);
+            _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _authInfo.Token);
             var response = await _httpClient.GetAsync($"publishers/{id}");
 
             if (!response.IsSuccessStatusCode)
@@ -84,7 +84,7 @@ public class PublisherService : IPublisherService
     {
         try
         {
-            _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _userInfo.Token);
+            _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _authInfo.Token);
             var response = await _httpClient.PutAsJsonAsync($"publishers/{id}", author);
             var result = await response.Content.ReadFromJsonAsync<ServiceResponse<Publisher>>()
                 ?? new ServiceResponse<Publisher>() { Success = false, Message = "Failed to read data." };
@@ -105,7 +105,7 @@ public class PublisherService : IPublisherService
     {
         try
         {
-            _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _userInfo.Token);
+            _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _authInfo.Token);
             var response = await _httpClient.PostAsJsonAsync($"publishers", author);
             var result = await response.Content.ReadFromJsonAsync<ServiceResponse<Publisher>>()
                 ?? new ServiceResponse<Publisher>() { Success = false, Message = "Failed to read data." };
@@ -126,7 +126,7 @@ public class PublisherService : IPublisherService
     {
         try
         {
-            _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _userInfo.Token);
+            _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _authInfo.Token);
             var response = await _httpClient.DeleteAsync($"publishers/{id}");
             var result = await response.Content.ReadFromJsonAsync<ServiceResponse<Publisher>>()
                 ?? new ServiceResponse<Publisher>() { Success = false, Message = "Failed to read data." };

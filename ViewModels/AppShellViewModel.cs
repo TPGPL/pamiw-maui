@@ -7,23 +7,24 @@ namespace PamiwMauiApp.ViewModels;
 
 public partial class AppShellViewModel : ObservableObject
 {
-    private readonly UserInfo _userInfo;
-
     [ObservableProperty]
     LocalizationResourceManager localizationResourceManager;
 
-    public AppShellViewModel(UserInfo userInfo, LocalizationResourceManager localizationResourceManager)
+    [ObservableProperty]
+    AuthInfo authInfo;
+
+    public AppShellViewModel(LocalizationResourceManager localizationResourceManager, AuthInfo authInfo)
     {
-        _userInfo = userInfo;
         this.localizationResourceManager = localizationResourceManager;
+        this.authInfo = authInfo;
     }
 
     [RelayCommand]
     public async Task SignOut()
     {
-        _userInfo.Authenticated = false;
-        _userInfo.Token = string.Empty;
-        _userInfo.Username = string.Empty;
+        AuthInfo.Authenticated = false;
+        AuthInfo.Token = string.Empty;
+        AuthInfo.Username = string.Empty;
 
         await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
     }

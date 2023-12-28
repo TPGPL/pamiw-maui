@@ -5,13 +5,13 @@ namespace PamiwMauiApp.Services;
 
 public class AuthService : IAuthService
 {
-    private UserInfo _userInfo;
+    private AuthInfo _authInfo;
     private HttpClient _httpClient;
 
-    public AuthService(HttpClient httpClient, UserInfo userInfo)
+    public AuthService(HttpClient httpClient, AuthInfo authInfo)
     {
         _httpClient = httpClient;
-        _userInfo = userInfo;
+        _authInfo = authInfo;
     }
 
     public async Task<ServiceResponse<string>> LoginAsync(UserLogin user)
@@ -34,9 +34,11 @@ public class AuthService : IAuthService
 
             if (token is not null)
             {
-                _userInfo.Authenticated = true;
-                _userInfo.Username = user.Username;
-                _userInfo.Token = $"{token}";
+                _authInfo.Authenticated = true;
+                _authInfo.Username = user.Username;
+                _authInfo.Token = $"{token}";
+
+                _authInfo.Update();
             }
 
             return new ServiceResponse<string>()
