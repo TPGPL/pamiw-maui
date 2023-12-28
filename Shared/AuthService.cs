@@ -76,7 +76,7 @@ public class AuthService : IAuthService
             return new ServiceResponse<string>()
             {
                 Success = true,
-                Message = serviceResponse?.Message ?? "Invalid user credentials"
+                Message = serviceResponse?.Message ?? "User registered successfully."
             };
         }
         catch (Exception)
