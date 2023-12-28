@@ -286,7 +286,7 @@ namespace PamiwMauiApp.Resources.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sign in as.
+        ///   Looks up a localized string similar to Signed in as.
         /// </summary>
         internal static string LoginLabel {
             get {

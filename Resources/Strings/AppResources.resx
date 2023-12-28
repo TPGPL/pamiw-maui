@@ -193,7 +193,7 @@
     <value>Sign in</value>
   </data>
   <data name="LoginLabel" xml:space="preserve">
-    <value>Sign in as</value>
+    <value>Signed in as</value>
   </data>
   <data name="LogoutButton" xml:space="preserve">
     <value>Sign out</value>
