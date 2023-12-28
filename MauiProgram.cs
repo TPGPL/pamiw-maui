@@ -3,7 +3,7 @@ using PamiwMauiApp.Services;
 using PamiwMauiApp.Components;
 using PamiwMauiApp.ViewModels;
 using PamiwMauiApp.Views;
-using PamiwMauiApp.Shared;
+using PamiwShared.Services;
 
 namespace PamiwMauiApp
 {

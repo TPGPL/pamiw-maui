@@ -1,6 +1,6 @@
 ﻿using PamiwShared.Models;
 
-namespace PamiwMauiApp.Shared;
+namespace PamiwMauiApp.Services;
 
 public interface IGeoService
 {

@@ -1,6 +1,6 @@
 ﻿using PamiwShared.Models;
 
-namespace PamiwMauiApp.Shared;
+namespace PamiwMauiApp.Services;
 
 internal class GeoService : IGeoService
 {

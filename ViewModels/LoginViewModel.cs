@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using PamiwMauiApp.Services;
+using PamiwShared.Services;
 using PamiwMauiApp.Components;
 using PamiwShared.Models;
 using PamiwMauiApp.Views;
@@ -11,6 +11,8 @@ public partial class LoginViewModel : BaseViewModel
 {
     private readonly MauiMessageDialogService _messageDialogService;
     private readonly IAuthService _authService;
+    private readonly HttpClient _httpClient;
+    private readonly AuthInfo _authInfo;
 
     [ObservableProperty]
     UserLogin user = new UserLogin();
@@ -18,11 +20,13 @@ public partial class LoginViewModel : BaseViewModel
     [ObservableProperty]
     LocalizationResourceManager localizationResourceManager;
 
-    public LoginViewModel(MauiMessageDialogService messageDialogService, IAuthService authService, LocalizationResourceManager localizationResourceManager)
+    public LoginViewModel(MauiMessageDialogService messageDialogService, IAuthService authService, LocalizationResourceManager localizationResourceManager, HttpClient httpClient, AuthInfo authInfo)
     {
         _messageDialogService = messageDialogService;
         _authService = authService;
         this.localizationResourceManager = localizationResourceManager;
+        _httpClient = httpClient;
+        _authInfo = authInfo;
     }
 
     [RelayCommand]
@@ -46,6 +50,14 @@ public partial class LoginViewModel : BaseViewModel
             _messageDialogService.ShowMessage(response.Message ?? "Failed to login.");
             return;
         }
+
+        _authInfo.Username = User.Username;
+        _authInfo.Authenticated = true;
+        _authInfo.Token = response.Data;
+
+        _authInfo.Update();
+
+        _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _authInfo.Token);
 
         await Shell.Current.GoToAsync($"//{nameof(MainPage)}", true);
     }

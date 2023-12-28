@@ -1,7 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using PamiwMauiApp.Components;
-using PamiwMauiApp.Shared;
+using PamiwMauiApp.Services;
 
 namespace PamiwMauiApp.ViewModels;
 
