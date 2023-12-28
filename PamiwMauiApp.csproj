@@ -57,7 +57,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="resources\images\book.svg" />
+	  <None Remove="Resources\Images\author.png" />
+	  <None Remove="Resources\Images\book.png" />
+	  <None Remove="Resources\Images\home.png" />
+	  <None Remove="Resources\Images\publisher.png" />
 	</ItemGroup>
 
 	<ItemGroup>

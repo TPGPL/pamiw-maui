@@ -15,13 +15,25 @@
             <Label Text="{Binding AuthInfo.Username}" FontSize="14" FontAttributes="Bold"/>
         </HorizontalStackLayout>
     </Shell.FlyoutHeader>
-    
+
+    <Shell.ItemTemplate>
+        <DataTemplate>
+            <Grid ColumnDefinitions="24,*" ColumnSpacing="10" RowDefinitions="45" Padding="5">
+                <Image Source="{Binding FlyoutIcon}" Grid.Column="0"
+                       HeightRequest="24" />
+                <Label Grid.Column="1"
+                       Text="{Binding Title}"
+                       VerticalTextAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+    </Shell.ItemTemplate>
+
     <ShellContent
     Title="Login"
     ContentTemplate="{DataTemplate views:LoginPage}"
     Route="LoginPage" FlyoutItemIsVisible="False" />
 
-    <FlyoutItem Title="{Binding LocalizationResourceManager[HomeHeader], Mode=OneWay}">
+    <FlyoutItem Icon="home.png" Title="{Binding LocalizationResourceManager[HomeHeader], Mode=OneWay}">
         <Tab>
             <ShellContent
             Title="Home"
@@ -29,17 +41,17 @@
             Route="MainPage" />
         </Tab>
     </FlyoutItem>
-    <FlyoutItem Title="{Binding LocalizationResourceManager[BooksHeader], Mode=OneWay}">
+    <FlyoutItem Icon="book.png" Title="{Binding LocalizationResourceManager[BooksHeader], Mode=OneWay}">
         <Tab>
             <ShellContent Title="Books" ContentTemplate="{DataTemplate views:BooksView}" Route="BooksView" />
         </Tab>
     </FlyoutItem>
-    <FlyoutItem Title="{Binding LocalizationResourceManager[AuthorsHeader], Mode=OneWay}">
+    <FlyoutItem Icon="author.png" Title="{Binding LocalizationResourceManager[AuthorsHeader], Mode=OneWay}">
         <Tab>
             <ShellContent Title="Authors" ContentTemplate="{DataTemplate views:AuthorsView}" Route="AuthorsView" />
         </Tab>
     </FlyoutItem>
-    <FlyoutItem Title="{Binding LocalizationResourceManager[PublishersHeader], Mode=OneWay}">
+    <FlyoutItem Icon="publisher.png" Title="{Binding LocalizationResourceManager[PublishersHeader], Mode=OneWay}">
         <Tab>
             <ShellContent Title="Publishers" ContentTemplate="{DataTemplate views:PublishersView}" Route="PublishersView" />
         </Tab>
