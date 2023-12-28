@@ -16,6 +16,8 @@ public partial class BooksView : ContentPage
 
     private async void OnPageLoaded(object sender, EventArgs args)
     {
+        _viewModel.IsBusy = true;
         await _viewModel.GetBooks();
+        _viewModel.IsBusy = false;
     }
 }

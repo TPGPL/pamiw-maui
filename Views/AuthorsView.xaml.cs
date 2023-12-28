@@ -17,6 +17,8 @@ public partial class AuthorsView : ContentPage
 
     private async void OnPageLoaded(object sender, EventArgs e)
 	{
+		_viewModel.IsBusy = true;
 		await _viewModel.GetAuthors();
+		_viewModel.IsBusy = false;
 	}
 }

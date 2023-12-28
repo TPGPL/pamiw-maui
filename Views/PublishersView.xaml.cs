@@ -16,6 +16,8 @@ public partial class PublishersView : ContentPage
 
 	private async void OnPageLoaded(object sender, EventArgs args)
 	{
+		_viewModel.IsBusy = true;
 		await _viewModel.GetPublishers();
+		_viewModel.IsBusy = false;
 	}
 }
