@@ -56,6 +56,11 @@
             <ShellContent Title="Publishers" ContentTemplate="{DataTemplate views:PublishersView}" Route="PublishersView" />
         </Tab>
     </FlyoutItem>
+    <FlyoutItem Icon="globe.png" Title="{Binding LocalizationResourceManager[GeoHeader], Mode=OneWay}">
+        <Tab>
+            <ShellContent Title="Geolocation" ContentTemplate="{DataTemplate views:GeoView}" Route="GeoView" />
+        </Tab>
+    </FlyoutItem>
     <Shell.FlyoutFooter>
         <VerticalStackLayout>
             <Button Text="{Binding LocalizationResourceManager[LogoutButton], Mode=OneWay}" Margin="5,5,5,0" Command="{Binding SignOutCommand}"></Button>

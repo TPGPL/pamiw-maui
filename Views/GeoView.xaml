@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PamiwMauiApp.Views.GeoView"
+             Title="{Binding LocalizationResourceManager[GeoHeader], Mode=OneWay}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="{Binding LocalizationResourceManager[GeoGet], Mode=OneWay}" Command="{Binding GetCommand}"/>
+    </ContentPage.ToolbarItems>
+    <VerticalStackLayout Spacing="20" Margin="10">
+        <VerticalStackLayout Spacing="10">
+            <Label Text="{Binding LocalizationResourceManager[GeoAltitude], Mode=OneWay}"/>
+            <Label Text="{Binding AltitudeText}"/>
+        </VerticalStackLayout>
+        <VerticalStackLayout Spacing="10">
+            <Label Text="{Binding LocalizationResourceManager[GeoLongitude], Mode=OneWay}"/>
+            <Label Text="{Binding LongitudeText}"/>
+        </VerticalStackLayout>
+        <VerticalStackLayout Spacing="10">
+            <Label Text="{Binding LocalizationResourceManager[GeoLatitude], Mode=OneWay}"/>
+            <Label Text="{Binding LatitudeText}"/>
+        </VerticalStackLayout>
+        <ActivityIndicator IsRunning="{Binding IsBusy}"/>
+    </VerticalStackLayout>
+</ContentPage>
