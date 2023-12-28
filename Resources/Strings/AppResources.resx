@@ -177,6 +177,24 @@
   <data name="EmailPlaceholder" xml:space="preserve">
     <value>Email</value>
   </data>
+  <data name="GeoAltitude" xml:space="preserve">
+    <value>Altitude</value>
+  </data>
+  <data name="GeoFail" xml:space="preserve">
+    <value>Failed to get geolocation data.</value>
+  </data>
+  <data name="GeoGet" xml:space="preserve">
+    <value>Get</value>
+  </data>
+  <data name="GeoHeader" xml:space="preserve">
+    <value>Geolocation</value>
+  </data>
+  <data name="GeoLatitude" xml:space="preserve">
+    <value>Latitude</value>
+  </data>
+  <data name="GeoLongitude" xml:space="preserve">
+    <value>Longitude</value>
+  </data>
   <data name="HomeHeader" xml:space="preserve">
     <value>Home</value>
   </data>

@@ -241,6 +241,60 @@ namespace PamiwMauiApp.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Altitude.
+        /// </summary>
+        internal static string GeoAltitude {
+            get {
+                return ResourceManager.GetString("GeoAltitude", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to get geolocation data..
+        /// </summary>
+        internal static string GeoFail {
+            get {
+                return ResourceManager.GetString("GeoFail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get.
+        /// </summary>
+        internal static string GeoGet {
+            get {
+                return ResourceManager.GetString("GeoGet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Geolocation.
+        /// </summary>
+        internal static string GeoHeader {
+            get {
+                return ResourceManager.GetString("GeoHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Latitude.
+        /// </summary>
+        internal static string GeoLatitude {
+            get {
+                return ResourceManager.GetString("GeoLatitude", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Longitude.
+        /// </summary>
+        internal static string GeoLongitude {
+            get {
+                return ResourceManager.GetString("GeoLongitude", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Home.
         /// </summary>
         internal static string HomeHeader {
