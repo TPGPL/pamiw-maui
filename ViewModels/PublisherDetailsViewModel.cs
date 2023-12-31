@@ -66,14 +66,24 @@ public partial class PublisherDetailsViewModel : BaseViewModel
     [RelayCommand]
     public async Task Save()
     {
+        IsBusy = true;
+
         await UpdatePublisher();
+
+        IsBusy = false;
+
         await Shell.Current.GoToAsync("../", true);
     }
 
     [RelayCommand]
     public async Task Delete()
     {
+        IsBusy = true;
+
         await DeletePublisher();
+
+        IsBusy = false;
+
         await Shell.Current.GoToAsync("../", true);
     }
 }

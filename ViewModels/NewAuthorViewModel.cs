@@ -61,8 +61,12 @@ public partial class NewAuthorViewModel : BaseViewModel
     [RelayCommand]
     public async Task Save()
     {
+        IsBusy = true;
 
         await CreateAuthor();
+
+        IsBusy = false;
+
         await Shell.Current.GoToAsync("../", true);
 
     }

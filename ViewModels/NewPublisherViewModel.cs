@@ -59,8 +59,12 @@ public partial class NewPublisherViewModel : BaseViewModel
     [RelayCommand]
     public async Task Save()
     {
+        IsBusy = true;
 
         await CreatePublisher();
+
+        IsBusy = false;
+
         await Shell.Current.GoToAsync("../", true);
 
     }

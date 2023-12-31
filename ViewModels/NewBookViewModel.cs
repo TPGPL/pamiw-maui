@@ -64,8 +64,12 @@ public partial class NewBookViewModel : BaseViewModel
     [RelayCommand]
     public async Task Save()
     {
+        IsBusy = true;
 
         await CreateBook();
+
+        IsBusy = false;
+
         await Shell.Current.GoToAsync("../", true);
 
     }

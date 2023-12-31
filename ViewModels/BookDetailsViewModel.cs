@@ -71,14 +71,24 @@ public partial class BookDetailsViewModel : BaseViewModel
     [RelayCommand]
     public async Task Save()
     {
+        IsBusy = true;
+        
         await UpdateBook();
+        
+        IsBusy = false;
+        
         await Shell.Current.GoToAsync("../", true);
     }
 
     [RelayCommand]
     public async Task Delete()
     {
+        IsBusy = true;
+
         await DeleteBook();
+        
+        IsBusy = false;
+        
         await Shell.Current.GoToAsync("../", true);
     }
 }

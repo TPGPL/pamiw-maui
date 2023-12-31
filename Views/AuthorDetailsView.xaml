@@ -25,5 +25,6 @@
             <Button BackgroundColor="{StaticResource Danger}" Margin="10,0" Command="{Binding DeleteCommand}" Text="{Binding LocalizationResourceManager[DeleteButton], Mode=OneWay}" >
             </Button>
         </VerticalStackLayout>
+        <ActivityIndicator IsRunning="{Binding IsBusy}" />
     </VerticalStackLayout>
 </ContentPage>

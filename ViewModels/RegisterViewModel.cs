@@ -34,7 +34,11 @@ public partial class RegisterViewModel : BaseViewModel
             Password = User.Password
         };
 
+        IsBusy = true;
+
         var response = await _authService.RegisterAsync(newUser);
+
+        IsBusy = false;
 
         if (response.Message is not null && response.Message.Any())
         {

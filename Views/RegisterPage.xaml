@@ -23,5 +23,6 @@
             <Button Margin="10,5,10,0" Command="{Binding RegisterCommand}" Text="{Binding LocalizationResourceManager[RegisterButton], Mode=OneWay}" >
             </Button>
         </VerticalStackLayout>
+        <ActivityIndicator IsRunning="{Binding IsBusy}" />
     </VerticalStackLayout>
 </ContentPage>

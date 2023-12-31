@@ -69,14 +69,24 @@ public partial class AuthorDetailsViewModel : BaseViewModel
     [RelayCommand]
     public async Task Save()
     {
+        IsBusy = true;
+        
         await UpdateAuthor();
+        
+        IsBusy= false;
+        
         await Shell.Current.GoToAsync("../", true);
     }
 
     [RelayCommand]
     public async Task Delete()
     {
+        IsBusy = true;
+
         await DeleteAuthor();
+
+        IsBusy = false;
+
         await Shell.Current.GoToAsync("../", true);
     }
 }

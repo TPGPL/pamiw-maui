@@ -39,7 +39,7 @@ namespace PamiwMauiApp
             builder.Services.AddSingleton<IGeoService,GeoService>();
             builder.Services.AddSingleton<MauiMessageDialogService>();
 
-            builder.Services.AddSingleton<HttpClient>(sp => new HttpClient() { BaseAddress = new Uri("http://localhost:8081/api/") });
+            builder.Services.AddSingleton(sp => new HttpClient() { BaseAddress = new Uri("https://api-app.gentlemeadow-ec4d7484.eastus.azurecontainerapps.io/api/") });
             builder.Services.AddSingleton<AuthInfo>();
             builder.Services.AddSingleton<LocalizationResourceManager>();
 
